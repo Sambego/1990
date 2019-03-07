@@ -1,8 +1,9 @@
 {
-  "name": "fronteers",
+  "name": "1990",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@sambego/diorama": "^1.0.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-scripts": "2.1.8"

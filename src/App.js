@@ -245,7 +245,7 @@ class App extends Component {
       </Slide>
 
       <Slide>
-        <Subtitle>https://fronteers.sambego.tech</Subtitle>
+        <Subtitle>https://1990.sambego.tech</Subtitle>
       </Slide>
       <Slide>
         <Subtitle>Thanks</Subtitle>

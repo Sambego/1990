@@ -250,6 +250,9 @@ class App extends Component {
       <Slide>
         <Subtitle>Thanks</Subtitle>
       </Slide>
+      <Slide>
+        <Image src={Poes} alt="I've got cat stickers, tweet me @sambego" full color="#99c794" />
+      </Slide>
     </Deck>
     );
   }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1996px" height="345px" viewBox="0 0 1996 345" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>webauthn-2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="170" cy="170" r="170"></circle>
+        <circle id="path-3" cx="170" cy="170" r="170"></circle>
+        <circle id="path-5" cx="170" cy="170" r="170"></circle>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="User">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Oval" fill="#99C794" xlink:href="#path-1"></use>
+            <circle id="Oval" fill="#6699CC" mask="url(#mask-2)" cx="170.5" cy="293.5" r="107.5"></circle>
+            <circle id="Oval" fill="#6699CC" mask="url(#mask-2)" cx="170.5" cy="151.5" r="67.5"></circle>
+        </g>
+        <path id="Line" d="M441.137248,166 L669.305654,166 L669.305654,148 L713.305654,170 L669.305654,192 L669.305654,174 L441.137248,174 C439.256222,184.240472 430.284279,192 419.5,192 C407.349736,192 397.5,182.150264 397.5,170 C397.5,157.849736 407.349736,148 419.5,148 C430.284279,148 439.256222,155.759528 441.137248,166 Z" fill="#6699CC" fill-rule="nonzero"></path>
+        <path id="Line" d="M1275.5,166 L1503.66841,166 C1505.54943,155.759528 1514.52138,148 1525.30565,148 C1537.45592,148 1547.30565,157.849736 1547.30565,170 C1547.30565,182.150264 1537.45592,192 1525.30565,192 C1514.52138,192 1505.54943,184.240472 1503.66841,174 L1275.5,174 L1275.5,192 L1231.5,170 L1275.5,148 L1275.5,166 Z" fill="#6699CC" fill-rule="nonzero"></path>
+        <text id="{challenge}" font-family="AnonymicePowerline-Bold, Anonymous Pro for Powerline" font-size="60" font-weight="bold" fill="#6699CC">
+            <tspan x="1228" y="289">{challenge}</tspan>
+        </text>
+        <g id="Browser" transform="translate(805.000000, 0.000000)">
+            <rect id="Rectangle" fill="#99C794" x="0" y="0" width="400" height="340" rx="10"></rect>
+            <rect id="Rectangle" fill-opacity="0.1" fill="#000000" x="0" y="0" width="400" height="51" rx="10"></rect>
+            <rect id="Rectangle" fill="#89B284" x="0" y="26" width="400" height="26"></rect>
+            <path d="M355,15 L379.374957,39.3749567" id="Path" stroke="#6699CC" stroke-width="5"></path>
+            <path d="M355,15 L379.374957,39.3749567" id="Path" stroke="#6699CC" stroke-width="5" transform="translate(367.187478, 27.187478) rotate(-270.000000) translate(-367.187478, -27.187478) "></path>
+        </g>
+        <g id="server" transform="translate(1596.000000, 0.000000)">
+            <rect id="Rectangle" fill="#99C794" x="0" y="0" width="400" height="100" rx="10"></rect>
+            <rect id="Rectangle" fill="#99C794" x="0" y="120" width="400" height="100" rx="10"></rect>
+            <rect id="Rectangle" fill="#99C794" x="0" y="240" width="400" height="100" rx="10"></rect>
+            <circle id="Oval" fill="#6699CC" cx="331" cy="50" r="20"></circle>
+            <circle id="Oval" fill-opacity="0.2" fill="#000000" cx="331" cy="170" r="20"></circle>
+            <circle id="Oval" fill-opacity="0.2" fill="#000000" cx="331" cy="290" r="20"></circle>
+        </g>
+        <g id="User">
+            <mask id="mask-4" fill="white">
+                <use xlink:href="#path-3"></use>
+            </mask>
+            <use id="Oval" fill="#99C794" xlink:href="#path-3"></use>
+            <circle id="Oval" fill="#6699CC" mask="url(#mask-4)" cx="170.5" cy="293.5" r="107.5"></circle>
+            <circle id="Oval" fill="#6699CC" mask="url(#mask-4)" cx="170.5" cy="151.5" r="67.5"></circle>
+        </g>
+        <g id="User">
+            <mask id="mask-6" fill="white">
+                <use xlink:href="#path-5"></use>
+            </mask>
+            <use id="Oval" fill="#99C794" xlink:href="#path-5"></use>
+            <circle id="Oval" fill="#6699CC" mask="url(#mask-6)" cx="170.5" cy="293.5" r="107.5"></circle>
+            <circle id="Oval" fill="#6699CC" mask="url(#mask-6)" cx="170.5" cy="151.5" r="67.5"></circle>
+        </g>
+    </g>
+</svg>

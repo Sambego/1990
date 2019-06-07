@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2016px" height="939px" viewBox="0 0 2016 939" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>webauthn-4</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="170" cy="170" r="170"></circle>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="USB" transform="translate(20.000000, 105.000000)">
+            <rect id="Rectangle" fill="#99C794" x="0" y="0" width="299" height="140" rx="10"></rect>
+            <rect id="Rectangle" fill="#99C794" x="272" y="41" width="82" height="60" rx="10"></rect>
+            <circle id="Oval" fill="#6699CC" cx="58" cy="70" r="31"></circle>
+            <rect id="Rectangle" fill="#6699CC" x="300" y="58" width="29" height="2"></rect>
+            <rect id="Rectangle" fill="#6699CC" x="300" y="71" width="29" height="2"></rect>
+            <rect id="Rectangle" fill="#6699CC" x="300" y="85" width="29" height="2"></rect>
+            <rect id="Rectangle" fill="#6699CC" x="300" y="64" width="18" height="2"></rect>
+            <rect id="Rectangle" fill="#6699CC" x="300" y="78" width="18" height="2"></rect>
+            <rect id="Rectangle" fill-opacity="0.2" fill="#000000" x="299" y="41" width="1" height="60"></rect>
+        </g>
+        <path id="Line" d="M483.5,171 L711.668406,171 C713.549431,160.759528 722.521375,153 733.305654,153 C745.455918,153 755.305654,162.849736 755.305654,175 C755.305654,187.150264 745.455918,197 733.305654,197 C722.521375,197 713.549431,189.240472 711.668406,179 L483.5,179 L483.5,197 L439.5,175 L483.5,153 L483.5,171 Z" fill="#6699CC" fill-rule="nonzero"></path>
+        <path id="Line" d="M1295.5,171 L1523.66841,171 C1525.54943,160.759528 1534.52138,153 1545.30565,153 C1557.45592,153 1567.30565,162.849736 1567.30565,175 C1567.30565,187.150264 1557.45592,197 1545.30565,197 C1534.52138,197 1525.54943,189.240472 1523.66841,179 L1295.5,179 L1295.5,197 L1251.5,175 L1295.5,153 L1295.5,171 Z" fill="#6699CC" fill-rule="nonzero"></path>
+        <text id="{challenge}" font-family="AnonymicePowerline-Bold, Anonymous Pro for Powerline" font-size="60" font-weight="bold" fill="#6699CC">
+            <tspan x="406" y="294">{challenge}</tspan>
+        </text>
+        <text id="User-interaction" font-family="AnonymicePowerline-Bold, Anonymous Pro for Powerline" font-size="60" font-weight="bold" fill="#6699CC">
+            <tspan x="190" y="504">User interaction</tspan>
+        </text>
+        <g id="Browser" transform="translate(825.000000, 5.000000)">
+            <rect id="Rectangle" fill="#99C794" x="0" y="0" width="400" height="340" rx="10"></rect>
+            <rect id="Rectangle" fill-opacity="0.1" fill="#000000" x="0" y="0" width="400" height="51" rx="10"></rect>
+            <rect id="Rectangle" fill="#89B284" x="0" y="26" width="400" height="26"></rect>
+            <path d="M355,15 L379.374957,39.3749567" id="Path" stroke="#6699CC" stroke-width="5"></path>
+            <path d="M355,15 L379.374957,39.3749567" id="Path" stroke="#6699CC" stroke-width="5" transform="translate(367.187478, 27.187478) rotate(-270.000000) translate(-367.187478, -27.187478) "></path>
+        </g>
+        <g id="server" transform="translate(1616.000000, 5.000000)">
+            <rect id="Rectangle" fill="#99C794" x="0" y="0" width="400" height="100" rx="10"></rect>
+            <rect id="Rectangle" fill="#99C794" x="0" y="120" width="400" height="100" rx="10"></rect>
+            <rect id="Rectangle" fill="#99C794" x="0" y="240" width="400" height="100" rx="10"></rect>
+            <circle id="Oval" fill="#6699CC" cx="331" cy="50" r="20"></circle>
+            <circle id="Oval" fill-opacity="0.2" fill="#000000" cx="331" cy="170" r="20"></circle>
+            <circle id="Oval" fill-opacity="0.2" fill="#000000" cx="331" cy="290" r="20"></circle>
+        </g>
+        <g id="User" transform="translate(0.000000, 599.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Oval" fill="#99C794" xlink:href="#path-1"></use>
+            <circle id="Oval" fill="#6699CC" mask="url(#mask-2)" cx="170.5" cy="293.5" r="107.5"></circle>
+            <circle id="Oval" fill="#6699CC" mask="url(#mask-2)" cx="170.5" cy="151.5" r="67.5"></circle>
+        </g>
+        <path id="Line-2" d="M174.5,369 L174.5,525 L192.5,525 L170.5,569 L148.5,525 L166.5,525 L166.5,369 L148.5,369 L170.5,325 L192.5,369 L174.5,369 Z" fill="#6699CC" fill-rule="nonzero"></path>
+    </g>
+</svg>

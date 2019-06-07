@@ -1,0 +1,94 @@
+.form {
+  width: 100%;
+  max-width: 100rem;
+  margin: 0 auto;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  height: 7.5rem;
+  margin-bottom: 5rem;
+  padding: 5rem 3rem;
+  font-size: 4rem;
+
+  background: #f4f8f7;
+
+  border: 2px solid #b6c9a8;
+  border-radius: 5px;
+}
+
+.button {
+  transition: border 0.2s ease-in-out, background 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+
+  display: block;
+  min-width: calc(100% - 20rem);
+  height: 7.5rem;
+  padding: 0 4rem;
+  margin: 0 10rem;
+
+  background: #99c794;
+  border: 1px solid #99c794;
+  border-radius: 3rem;
+  outline: none;
+
+  color: #fff;
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &:hover {
+    background: transparent;
+    border-color: #99c794;
+    color: #99c794;
+  }
+}
+
+.shake {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(20px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-40px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(40px, 0, 0);
+  }
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate3d(-50%, -50%, 0);
+  padding: 5rem;
+
+  background: #fff;
+
+  border-radius: 1.5rem;
+  box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.1);
+}
+
+.modal p {
+  font-size: 4rem;
+}

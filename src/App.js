@@ -575,7 +575,7 @@ class App extends Component {
         </Slide>
 
         <Slide>
-          <Subtitle>How dos this work?</Subtitle>
+          <Subtitle>How does this work?</Subtitle>
         </Slide>
         <Slide>
           <Subtitle>We first need to create new credentials</Subtitle>

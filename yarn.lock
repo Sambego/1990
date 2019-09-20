@@ -773,8 +773,8 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
 
 "@sambego/diorama@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@sambego/diorama/-/diorama-1.0.6.tgz#c994086b9ee9e4bfbf710848df672669d01c46ee"
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@sambego/diorama/-/diorama-1.1.3.tgz#d8833626fe8154d361a8200a8852bd390289024d"
   dependencies:
     classnames "^2.2.6"
     keycode "^2.2.0"
@@ -6688,8 +6688,8 @@ pretty-format@^23.6.0:
     ansi-styles "^3.2.0"
 
 prismjs@^1.15.0:
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.15.0.tgz#8801d332e472091ba8def94976c8877ad60398d9"
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.16.0.tgz#406eb2c8aacb0f5f0f1167930cb83835d10a4308"
   optionalDependencies:
     clipboard "^2.0.0"
 
@@ -6933,8 +6933,8 @@ react-error-overlay@^5.1.4:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.4.tgz#88dfb88857c18ceb3b9f95076f850d7121776991"
 
 react-is@^16.8.1:
-  version "16.8.4"
-  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.4.tgz#90f336a68c3a29a096a3d648ab80e87ec61482a2"
+  version "16.8.6"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
 
 react-scripts@2.1.8:
   version "2.1.8"

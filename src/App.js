@@ -10,7 +10,8 @@ import {
   Text,
   Browser,
   Code,
-  Video
+  Video,
+  Highlight
 } from "@sambego/diorama";
 
 import AnnoyingForm from "./Components/Annoying";
@@ -39,6 +40,9 @@ import Webauthn6 from "./img/webauthn-6.svg";
 import Webauthn7 from "./img/webauthn-7.svg";
 import Webauthn8 from "./img/webauthn-8.svg";
 
+import Banff from "./img/banff.jpg";
+import Delay from "./img/delay.jpg";
+
 import future from "./video/future.mp4";
 
 class App extends Component {
@@ -64,11 +68,13 @@ class App extends Component {
       "{\n  ...\n  // The allowed credentials\n  allowCredentials: [\n    {\n      id: credentials.rawId,\n      type: 'public-key'\n    }\n  ],\n  ...\n}";
     const code11 =
       "{\n  ...\n  // information about the allowed authenticator device\n  authenticatorSelection: { \n    // optional, can also be 'required' and 'discouraged'\n    userVerification: 'preferred' \n  }\n  ...\n}";
+    const resCredcode =
+      "{\n  ...\n  authenticatorSelection: {  \n    ...\n    requireResidentKey: true\n  },\n  ...\n }";
 
     return (
-      <Deck>
+      <Deck presenterNotes>
         <Slide style={{ background: "#99c794", color: "#fff" }}>
-          <Video src={future} loop autoplay full color="#99c794" />
+          <Video src={future} loop autoplay full color="#99c794" style={{overflow: 'hidden'}}/>
           <Title style={{ color: "#ffffff", position: "relative", zIndex: 1 }}>
             Passwords are so 1990
           </Title>
@@ -81,7 +87,7 @@ class App extends Component {
             <div>
               <Subtitle>Sam Bellen</Subtitle>
               <List>
-                <li>Developer Evangelist</li>
+                <li>Developer Advocate Engineer</li>
                 <li>Auth0</li>
                 <li>Google Developer Expert</li>
                 <li>Fronteers</li>
@@ -90,6 +96,51 @@ class App extends Component {
               </List>
             </div>
           </Columns>
+        </Slide>
+        <Slide>
+          <Image
+            src={Delay}
+            alt="Airport delay"
+            color="#99c794"
+            full
+          />
+          <Subtitle
+            style={{
+              position: "absolute",
+              left: "50%",
+              top: "50%",
+              transform: "translate3d(-50%, -50%, 0)",
+              color: "#fff",
+              margin: 0,
+            }}
+          >
+            It took me <i>37 hours</i> to get here!
+          </Subtitle>
+          <p style={{
+            position: 'fixed',
+            bottom: '10px',
+            right: '20px'
+          }}>Photo: https://unsplash.com/photos/yAV-5jb1pyA</p>
+        </Slide>
+        <Slide>
+          <Image
+            src={Banff}
+            alt="A panorama of the mountains in Banff"
+            full
+          />
+          <Subtitle
+            style={{
+              position: "absolute",
+              left: "50%",
+              top: "50%",
+              transform: "translate3d(-50%, -50%, 0)",
+              color: "#fff",
+              margin: 0,
+              fontSize: '200px'
+            }}
+          >
+            😻
+          </Subtitle>
         </Slide>
         <Slide>
           <Image
@@ -117,7 +168,7 @@ class App extends Component {
             <li>A bit of history on passwords</li>
             <li>Types of passwords</li>
             <li>Passwordless authentication</li>
-            <li>The Web authentication API</li>
+            <li>The Web authentication API ✨</li>
           </List>
         </Slide>
 
@@ -246,7 +297,7 @@ class App extends Component {
           >
             A string
           </Text>
-          <Subtitle>Zbety6FZiH6XNn3dsziGRB6+MBGDYU?</Subtitle>
+          <Subtitle style={{fontSize: "6rem"}}>Zbety6FZiH6XNn3dsziGRB6+MBGDYU?</Subtitle>
         </Slide>
         <Slide>
           <Subtitle style={{ color: "#ec5f67" }}>
@@ -622,6 +673,25 @@ class App extends Component {
         </Slide>
 
         <Slide>
+          <Subtitle>To recap, registering</Subtitle>
+          <List style={{padding: "0 50px"}}>
+            <li>Request a challenge</li>
+            <li>Sign that challenge</li>
+            <li>Send back the signed challenge, raw ID and public key</li>
+            <li>Save this data together with a username</li>
+          </List>
+        </Slide>
+        <Slide>
+          <Subtitle>To recap, authenticating</Subtitle>
+          <List style={{padding: "0 50px"}}>
+            <li>Request a challenge</li>
+            <li>Request the raw ID for the user</li>
+            <li>Sign that challenge using the same private key used when registering</li>
+            <li>Send the signed challenge back</li>
+          </List>
+        </Slide>
+
+        <Slide>
           <Subtitle>Let's look at some code</Subtitle>
         </Slide>
         <Slide>
@@ -666,6 +736,22 @@ class App extends Component {
         </Slide>
 
         <Slide>
+          <Subtitle>Resident credentials</Subtitle>
+        </Slide>
+        <Slide>
+          <Code code={resCredcode} />
+        </Slide>
+        <Slide>
+          <List>
+            <li>
+              <a href="https://webauthn.me/debugger" target="_blank">
+                https://webauthn.me/debugger
+              </a>
+            </li>
+          </List>
+        </Slide>
+
+        <Slide>
           <Subtitle>Some issues still to be solved</Subtitle>
         </Slide>
         <Slide>
@@ -676,6 +762,18 @@ class App extends Component {
         </Slide>
         <Slide>
           <Subtitle>Lost/stolen authenticator device recovery</Subtitle>
+        </Slide>
+
+        <Slide>
+          <Subtitle>Webauthn <Highlight>might</Highlight> replace Passwords</Subtitle>
+        </Slide>
+        <Slide>
+          <Subtitle>Webauthn does <Highlight>not</Highlight> replace</Subtitle>
+          <List>
+            <li>Token based authentication / authorization (OAuth, OIDC, ...)</li>
+            <li>Identity providers (Auth0)</li>
+            <li>...</li>
+          </List>
         </Slide>
 
         <Slide>
@@ -700,6 +798,20 @@ class App extends Component {
             <li>...</li>
           </List>
         </Slide>
+        <Slide>
+          <List>
+            <li>
+              <a href="https://support.google.com/accounts/answer/6103523?co=GENIE.Platform%3DAndroid&hl=en" target="_blank">
+                https://support.google.com/accounts/answer/6103523?co=GENIE.Platform%3DAndroid&hl=en
+              </a>
+            </li>
+            <li>
+              <a href="https://github.blog/2019-08-21-github-supports-webauthn-for-security-keys/" target="_blank">
+                https://github.blog/2019-08-21-github-supports-webauthn-for-security-keys/
+              </a>
+            </li>
+          </List>
+        </Slide>
 
         <Slide>
           <Browser url="https://webauthn.me" />
@@ -721,13 +833,27 @@ class App extends Component {
               </a>
             </li>
             <li>
+              <a href="https://www.w3.org/TR/webauthn" target="_blank">
+                https://www.w3.org/TR/webauthn
+              </a>
+            </li>
+          </List>
+        </Slide>
+        <Slide>
+          <List>
+            <li>
               <a href="https://auth0.com/blog" target="_blank">
                 https://auth0.com/blog
               </a>
             </li>
             <li>
-              <a href="https://www.w3.org/TR/webauthn" target="_blank">
-                https://www.w3.org/TR/webauthn
+              <a href="https://auth0.com/blog/enhancing-webauthn-me-with-the-online-debugger-tool/" target="_blank">
+                https://auth0.com/blog/enhancing-webauthn-me-with-the-online-debugger-tool/
+              </a>
+            </li>
+            <li>
+              <a href="https://auth0.com/blog/a-look-at-webauthn-resident-credentials/" target="_blank">
+                https://auth0.com/blog/a-look-at-webauthn-resident-credentials/
               </a>
             </li>
           </List>

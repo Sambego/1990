@@ -40,9 +40,6 @@ import Webauthn6 from "./img/webauthn-6.svg";
 import Webauthn7 from "./img/webauthn-7.svg";
 import Webauthn8 from "./img/webauthn-8.svg";
 
-import Banff from "./img/banff.jpg";
-import Delay from "./img/delay.jpg";
-
 import future from "./video/future.mp4";
 
 class App extends Component {
@@ -101,51 +98,6 @@ class App extends Component {
               </List>
             </div>
           </Columns>
-        </Slide>
-        <Slide>
-          <Image
-            src={Delay}
-            alt="Airport delay"
-            color="#99c794"
-            full
-          />
-          <Subtitle
-            style={{
-              position: "absolute",
-              left: "50%",
-              top: "50%",
-              transform: "translate3d(-50%, -50%, 0)",
-              color: "#fff",
-              margin: 0,
-            }}
-          >
-            It took me <i>37 hours</i> to get here!
-          </Subtitle>
-          <p style={{
-            position: 'fixed',
-            bottom: '10px',
-            right: '20px'
-          }}>Photo: https://unsplash.com/photos/yAV-5jb1pyA</p>
-        </Slide>
-        <Slide>
-          <Image
-            src={Banff}
-            alt="A panorama of the mountains in Banff"
-            full
-          />
-          <Subtitle
-            style={{
-              position: "absolute",
-              left: "50%",
-              top: "50%",
-              transform: "translate3d(-50%, -50%, 0)",
-              color: "#fff",
-              margin: 0,
-              fontSize: '200px'
-            }}
-          >
-            😻
-          </Subtitle>
         </Slide>
         <Slide>
           <Image
@@ -797,6 +749,15 @@ class App extends Component {
             <li>Firefox 60</li>
             <li>Edge 17723</li>
             <li>Safari Tech Preview (behind a flag)</li>
+          </List>
+        </Slide>
+        <Slide>
+          <List>
+            <li>Chrome 67</li>
+            <li>Firefox 60</li>
+            <li>Edge 17723</li>
+            <li style={{textDecoration: 'line-through'}}>Safari Tech Preview (behind a flag)</li>
+            <li>Safari 13</li>
           </List>
         </Slide>
 

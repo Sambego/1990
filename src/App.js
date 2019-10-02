@@ -39,6 +39,7 @@ import Webauthn5 from "./img/webauthn-5.svg";
 import Webauthn6 from "./img/webauthn-6.svg";
 import Webauthn7 from "./img/webauthn-7.svg";
 import Webauthn8 from "./img/webauthn-8.svg";
+import cc from "./img/cc.svg";
 
 import future from "./video/future.mp4";
 
@@ -74,12 +75,13 @@ class App extends Component {
     const resCredcode =
       "publicKey: {\n  ...\n  authenticatorSelection: {  \n    ...\n    requireResidentKey: true\n  },\n  ...\n }";
     return (
-      <Deck navigation>
+      <Deck presenterNotes>
         <Slide style={{ background: "#99c794", color: "#fff" }}>
           <Video src={future} loop autoplay full color="#99c794" style={{overflow: 'hidden'}}/>
           <Title style={{ color: "#ffffff", position: "relative", zIndex: 1 }}>
             Passwords are so 1990
           </Title>
+          <Image src={cc} style={{position: 'fixed', bottom: '2rem', right: '2rem', width: '10%'}} alt="Creative commons" />
         </Slide>
         <Slide>
           <Columns>

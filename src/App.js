@@ -81,7 +81,7 @@ class App extends Component {
           <Title style={{ color: "#ffffff", position: "relative", zIndex: 1 }}>
             Passwords are so 1990
           </Title>
-          <Image src={cc} style={{position: 'fixed', bottom: '2rem', right: '2rem', width: '10%'}} alt="Creative commons" />
+          <Image src={cc} style={{position: 'fixed', bottom: '2rem', left: '2rem', width: '10%'}} alt="Creative commons" />
         </Slide>
         <Slide>
           <Columns>

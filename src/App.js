@@ -75,7 +75,7 @@ class App extends Component {
     const resCredcode =
       "publicKey: {\n  ...\n  authenticatorSelection: {  \n    ...\n    requireResidentKey: true\n  },\n  ...\n }";
     return (
-      <Deck presenterNotes>
+      <Deck navigation>
         <Slide style={{ background: "#99c794", color: "#fff" }}>
           <Video src={future} loop autoplay full color="#99c794" style={{overflow: 'hidden'}}/>
           <Title style={{ color: "#ffffff", position: "relative", zIndex: 1 }}>

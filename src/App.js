@@ -64,7 +64,7 @@ class App extends Component {
     const code6 =
       "publicKey: {\n  ...\n  attestation: 'direct',\n  ...\n }";
     const code7 =
-      "navigator.credentials.create({\n  publicKey: {\n    ...\n  }\n});";
+      "navigator.credentials.get({\n  publicKey: {\n    ...\n  }\n});";
     const code8 = "const getConfig = {\n  publicKey: {\n    ...\n  }\n}";
     const code9 =
       "publicKey: {\n  ...\n  challenge: Uint8Array([1, 2, ... 3, 4]),\n  ...\n}";

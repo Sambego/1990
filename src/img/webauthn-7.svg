@@ -22,7 +22,7 @@
         <text id="{-challenge,-public" font-family="AnonymicePowerline-Bold, Anonymous Pro for Powerline" font-size="60" font-weight="bold" fill="#6699CC">
             <tspan x="1228" y="291">{</tspan>
             <tspan x="1228" y="363">challenge,</tspan>
-            <tspan x="1228" y="435">public key rawID</tspan>
+            <tspan x="1228" y="435">private key rawID</tspan>
             <tspan x="1228" y="507">}</tspan>
         </text>
         <g id="Browser" transform="translate(805.000000, 2.000000)">

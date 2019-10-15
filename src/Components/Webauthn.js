@@ -50,7 +50,7 @@ const Webauthn = ({ platform }) => {
         }
       })
       .then(response =>
-        window.alert(`Login successfull, public key: ${response.id}`)
+        window.alert(`You logged in successfull!\n\n The private key used to sign the challenge has ID:\n\n********************************\n${response.id}\n********************************`)
       );
   };
 

@@ -40,6 +40,8 @@ import Webauthn6 from "./img/webauthn-6.svg";
 import Webauthn7 from "./img/webauthn-7.svg";
 import Webauthn8 from "./img/webauthn-8.svg";
 import cc from "./img/cc.svg";
+import brave from "./img/brave.png";
+import joindin from "./img/joindin.png";
 
 import future from "./video/future.mp4";
 
@@ -75,7 +77,7 @@ class App extends Component {
     const resCredcode =
       "publicKey: {\n  ...\n  authenticatorSelection: {  \n    ...\n    requireResidentKey: true\n  },\n  ...\n }";
     return (
-      <Deck navigation>
+      <Deck footer={<p style={{position: 'absolute', bottom: '-1rem', left: '2rem', fontSize: '3rem', fontWeight: 'bold'}}>@sambego</p>}>
         <Slide style={{ background: "#99c794", color: "#fff" }}>
           <Video src={future} loop autoplay full color="#99c794" style={{overflow: 'hidden'}}/>
           <Title style={{ color: "#ffffff", position: "relative", zIndex: 1 }}>
@@ -121,15 +123,7 @@ class App extends Component {
             Tweet me @sambego
           </Subtitle>
         </Slide>
-        <Slide>
-          <List>
-            <Subtitle>Summary</Subtitle>
-            <li>A bit of history on passwords</li>
-            <li>Types of passwords</li>
-            <li>Passwordless authentication</li>
-            <li>The Web authentication API ✨</li>
-          </List>
-        </Slide>
+
 
         <Slide style={{ background: "#99c794", color: "#fff" }}>
           <Title>A bit of history on passwords</Title>
@@ -207,140 +201,7 @@ class App extends Component {
           <Subtitle>Hacking became more an issue</Subtitle>
         </Slide>
 
-        <Slide style={{ background: "#99c794", color: "#fff" }}>
-          <Title>Types of passwords</Title>
-        </Slide>
-        <Slide>
-          <Subtitle>What's a password?</Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle>Anything that’s a shared secret!</Subtitle>
-        </Slide>
-        <Slide>
-          <Text
-            style={{
-              background: "#99c794",
-              padding: "1rem 2rem",
-              marginBottom: "4rem",
-              fontWeight: "bold"
-            }}
-          >
-            A string
-          </Text>
-          <Subtitle>Password1234</Subtitle>
-        </Slide>
-        <Slide>
-          <Text
-            style={{
-              background: "#99c794",
-              padding: "1rem 2rem",
-              marginBottom: "4rem",
-              fontWeight: "bold"
-            }}
-          >
-            A string
-          </Text>
-          <Subtitle>colddog*</Subtitle>
-          <Text style={{ marginTop: "4rem", fontStyle: "italic" }}>
-            * My first password 🙊
-          </Text>
-        </Slide>
-        <Slide>
-          <Text
-            style={{
-              background: "#99c794",
-              padding: "1rem 2rem",
-              marginBottom: "4rem",
-              fontWeight: "bold"
-            }}
-          >
-            A string
-          </Text>
-          <Subtitle style={{fontSize: "6rem"}}>Zbety6FZiH6XNn3dsziGRB6+MBGDYU?</Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle style={{ color: "#ec5f67" }}>
-            Can be hard to remember if complex<br />
-            <br /> <Text>A passwordmanager can help!</Text>
-          </Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle style={{ color: "#99c794" }}>
-            Can be hard to guess (by others) if complex
-          </Subtitle>
-        </Slide>
 
-        <Slide>
-          <Text
-            style={{
-              background: "#99c794",
-              padding: "1rem 2rem",
-              marginBottom: "4rem",
-              fontWeight: "bold"
-            }}
-          >
-            A pincode
-          </Text>
-          <Subtitle>1 2 3 4</Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle style={{ color: "#ec5f67" }}>
-            Not so hard to guess <br />
-            <br />
-            <Text>Often combined with a maximum allowed number of guesses</Text>
-          </Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle style={{ color: "#99c794" }}>
-            Fairly easy to remember
-          </Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle style={{ color: "#99c794" }}>
-            Usually used only with access to a physical thing <br />
-            <Text>(card, phone, keypad, …)</Text>
-          </Subtitle>
-        </Slide>
-
-        <Slide>
-          <Text
-            style={{
-              background: "#99c794",
-              padding: "1rem 2rem",
-              marginBottom: "4rem",
-              fontWeight: "bold"
-            }}
-          >
-            A pattern
-          </Text>
-          <Image src={Pattern} alt="a pattern" />
-        </Slide>
-        <Slide>
-          <Text
-            style={{
-              background: "#99c794",
-              padding: "1rem 2rem",
-              marginBottom: "4rem",
-              fontWeight: "bold"
-            }}
-          >
-            A pattern
-          </Text>
-          <Image src={Pattern2} alt="a pattern" />
-        </Slide>
-        <Slide>
-          <Subtitle style={{ color: "#ec5f67" }}>
-            Touchscreens often reveal the pattern as “dirty” spots.
-          </Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle style={{ color: "#ec5f67" }}>
-            People often use their initial letter, lucky number, …
-          </Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle style={{ color: "#99c794" }}>Easy to remember</Subtitle>
-        </Slide>
 
         <Slide>
           <Subtitle>So what’s the problem with passwords?</Subtitle>
@@ -355,193 +216,7 @@ class App extends Component {
           <Subtitle>Passwords can be annoying!</Subtitle>
         </Slide>
         <Slide>
-          <Subtitle>Use a password manager to help you remember!</Subtitle>
-        </Slide>
-
-        <Slide notes="Fortunately in the data breaches I’ll highlight in the next slides, no raw, plain text passwords were stolen. But still not all companies treat passwords as they should!">
-          <Subtitle>User data can get stolen</Subtitle>
-        </Slide>
-        <Slide notes="Private data, no passwords">
-          <Subtitle>
-            Google+<br /> -<br /> 52.5 million
-          </Subtitle>
-        </Slide>
-        <Slide notes="Private data, no passwords">
-          <Subtitle>
-            Cambridge Analytica (Facebook)<br /> -<br /> 87 million
-          </Subtitle>
-        </Slide>
-        <Slide notes="Private data, encrypted passwords">
-          <Subtitle>
-            Quora<br /> -<br /> 100 million
-          </Subtitle>
-        </Slide>
-        <Slide notes="Private data, encrypted passwords">
-          <Subtitle>
-            MyFitnessPal<br /> -<br /> 150 million
-          </Subtitle>
-        </Slide>
-        <Slide notes="Private data, no passwords">
-          <Subtitle>
-            Marriott Hotels<br /> -<br /> 500 million
-          </Subtitle>
-        </Slide>
-        <Slide>
-          <Image src={BreachedPW} alt="Auth0 breached password protection" />
-        </Slide>
-        <Slide>
-          <Image src={Checkup} alt="Google Chrome password checkup extension" />
-        </Slide>
-        <Slide>
-          <Subtitle>Tips for a good password</Subtitle>
-          <List>
-            <li>Use a complex password</li>
-            <li>Don’t use personal data</li>
-            <li>Don’t reuse passwords</li>
-            <li>Change passwords frequently</li>
-          </List>
-        </Slide>
-        <Slide notes="Fast forward some more, enter password less">
-          <Image src={FastForward} alt="Fast Forward" />
-        </Slide>
-
-        <Slide style={{ background: "#99c794", color: "#fff" }}>
-          <Title>Passwordless ✨</Title>
-        </Slide>
-        <Slide>
-          <Subtitle>One time password</Subtitle>
-        </Slide>
-        <Slide>
-          <List>
-            <li>Valid for one time use</li>
-            <li>Often expire after a certain time</li>
-            <li>Sent directly to the user</li>
-          </List>
-        </Slide>
-        <Slide>
-          <Subtitle>Sent in an SMS</Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle style={{ color: "#99c794" }}>
-            iOS and Android let you fill in the OTP with the press of a button
-          </Subtitle>
-        </Slide>
-        <Slide>
-          <Image
-            src={IOSOtp}
-            alt="iOS let's you fill in one time passwords with the click of a button"
-            style={{ objectFit: "contain" }}
-          />
-        </Slide>
-        <Slide>
-          <Subtitle style={{ color: "#ec5f67" }}>
-            Not all telecom operators take security serious, SMS messages can be
-            intercepted
-          </Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle style={{ color: "#ec5f67" }}>
-            You need your cellphone on hand
-          </Subtitle>
-        </Slide>
-
-        <Slide>
-          <Subtitle>Sent in an email</Subtitle>
-        </Slide>
-        <Slide>
-          <Image
-            src={Magic}
-            alt="Slack magic link"
-            style={{ objectFit: "contain" }}
-          />
-        </Slide>
-        <Slide>
-          <Subtitle style={{ color: "#99c794" }}>
-            You don't need a second device
-          </Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle style={{ color: "#ec5f67" }}>
-            Emails can be intercepted
-          </Subtitle>
-        </Slide>
-
-        <Slide>
-          <Subtitle>Authenticator app</Subtitle>
-        </Slide>
-        <Slide>
-          <Image
-            src={GoogleAuthenticator}
-            alt="The Google authenticator app"
-            style={{ objectFit: "contain" }}
-          />
-        </Slide>
-        <Slide>
-          <Image
-            src={Guardian}
-            alt="Auth0 guardian app"
-            style={{ objectFit: "contain" }}
-          />
-        </Slide>
-        <Slide>
-          <Subtitle>Other authenticator apps</Subtitle>
-          <List>
-            <li>DUO</li>
-            <li>Lastpass Authenticator</li>
-            <li>Authy</li>
-            <li>Microsoft Authenticator</li>
-          </List>
-        </Slide>
-        <Slide>
-          <Subtitle style={{ color: "#99c794" }}>Time based</Subtitle>
-        </Slide>
-        <Slide>
-          <Image
-            src={GoogleAuthenticatorExp}
-            alt="The Google authenticator app"
-            style={{ objectFit: "contain" }}
-          />
-        </Slide>
-        <Slide>
-          <Subtitle style={{ color: "#99c794" }}>Push based</Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle style={{ color: "#ec5f67" }}>
-            Needs a shared secret between the app and authentication service
-          </Subtitle>
-        </Slide>
-
-        <Slide>
-          <Subtitle>Social</Subtitle>
-        </Slide>
-        <Slide>
-          <Image src={Social} alt="The Google authenticator app" />
-        </Slide>
-        <Slide>
-          <Subtitle style={{ color: "#99c794" }}>
-            One less password to remember
-          </Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle style={{ color: "#99c794" }}>
-            Only give a password to a service you trust
-          </Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle style={{ color: "#ec5f67" }}>
-            You rely on another service for authentication
-          </Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle>Other authenticator apps</Subtitle>
-          <List>
-            <li>It’s me</li>
-            <li>Yoti</li>
-            <li>Voiceit</li>
-          </List>
-        </Slide>
-        <Slide>
-          <Subtitle>Often used as a second factor</Subtitle>
+          <Subtitle>Passwords can get stolen!</Subtitle>
         </Slide>
 
         <Slide style={{ background: "#99c794", color: "#fff" }}>
@@ -564,6 +239,7 @@ class App extends Component {
             <li>USB</li>
             <li>BLE</li>
             <li>NFC</li>
+            <li>Lightning</li>
           </List>
         </Slide>
         <Slide>
@@ -629,25 +305,6 @@ class App extends Component {
         </Slide>
         <Slide>
           <Image src={Webauthn6} alt="Webauthn schema" />
-        </Slide>
-
-        <Slide>
-          <Subtitle>To recap, registering</Subtitle>
-          <List style={{padding: "0 50px"}}>
-            <li>Request a challenge</li>
-            <li>Sign that challenge</li>
-            <li>Send back the signed challenge, raw ID and public key</li>
-            <li>Save this data together with a username</li>
-          </List>
-        </Slide>
-        <Slide>
-          <Subtitle>To recap, authenticating</Subtitle>
-          <List style={{padding: "0 50px"}}>
-            <li>Request a challenge</li>
-            <li>Request the raw ID for the user</li>
-            <li>Sign that challenge using the same private key used when registering</li>
-            <li>Send the signed challenge back</li>
-          </List>
         </Slide>
 
         <Slide>
@@ -731,18 +388,6 @@ class App extends Component {
         </Slide>
 
         <Slide>
-          <Subtitle>Webauthn <Highlight>might</Highlight> replace Passwords</Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle>Webauthn does <Highlight>not</Highlight> replace</Subtitle>
-          <List>
-            <li>Token based authentication / authorization (OAuth, OIDC, ...)</li>
-            <li>Identity providers (Auth0)</li>
-            <li>...</li>
-          </List>
-        </Slide>
-
-        <Slide>
           <Subtitle>It's a W3C Recommendation!</Subtitle>
         </Slide>
         <Slide>
@@ -750,17 +395,12 @@ class App extends Component {
             <li>Chrome 67</li>
             <li>Firefox 60</li>
             <li>Edge 17723</li>
-            <li>Safari Tech Preview (behind a flag)</li>
+            <li>Safari 13</li>
+            <li>Brave (iOS) 1.11.4</li>
           </List>
         </Slide>
         <Slide>
-          <List>
-            <li>Chrome 67</li>
-            <li>Firefox 60</li>
-            <li>Edge 17723</li>
-            <li style={{textDecoration: 'line-through'}}>Safari Tech Preview (behind a flag)</li>
-            <li>Safari 13</li>
-          </List>
+          <Image src={brave} alt="Screenshot of the yubikey 5Ci in action on Brave for iOS" contain />
         </Slide>
 
         <Slide>
@@ -773,32 +413,9 @@ class App extends Component {
             <li>...</li>
           </List>
         </Slide>
-        <Slide>
-          <List>
-            <li>
-              <a href="https://support.google.com/accounts/answer/6103523?co=GENIE.Platform%3DAndroid&hl=en" target="_blank">
-                https://support.google.com/accounts/answer/6103523?co=GENIE.Platform%3DAndroid&hl=en
-              </a>
-            </li>
-            <li>
-              <a href="https://github.blog/2019-08-21-github-supports-webauthn-for-security-keys/" target="_blank">
-                https://github.blog/2019-08-21-github-supports-webauthn-for-security-keys/
-              </a>
-            </li>
-          </List>
-        </Slide>
 
         <Slide>
           <Browser url="https://webauthn.me" />
-        </Slide>
-
-        <Slide>
-          <Subtitle>Let's summarize</Subtitle>
-          <List>
-            <li>Boo passwords!</li>
-            <li>One time passwords are cool!</li>
-            <li>Webauthn is even cooler!!</li>
-          </List>
         </Slide>
         <Slide>
           <List>
@@ -835,6 +452,10 @@ class App extends Component {
         </Slide>
         <Slide>
           <Subtitle>https://1990.sambego.tech</Subtitle>
+        </Slide>
+        <Slide>
+          <Image src={joindin} alt="QR code to the JoindIn page" />
+          <Text>https://joind.in/event/webcamp-zagreb-2019/passwords-are-so-1990</Text>
         </Slide>
         <Slide>
           <Subtitle>Thanks!</Subtitle>

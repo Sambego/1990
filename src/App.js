@@ -26,7 +26,7 @@ import IOSOtp from "./img/iOS-otp.png";
 import Magic from "./img/magic-link.png";
 import GoogleAuthenticator from "./img/google-authenticator.png";
 import Social from "./img/social.png";
-import USBAUthenticator from "./img/usb.jpg";
+import AUthenticators from "./img/authenticators.jpg";
 import FastForward from "./img/fast-forward.svg";
 import BreachedPW from "./img/breached-pw.png";
 import Checkup from "./img/checkup.png";
@@ -561,7 +561,7 @@ class App extends Component {
           <Subtitle>Hardware authenticator</Subtitle>
         </Slide>
         <Slide>
-          <Image src={USBAUthenticator} alt="USB Authenticator" />
+          <Image src={AUthenticators} alt="USB Authenticator" />
         </Slide>
         <Slide>
           <List>

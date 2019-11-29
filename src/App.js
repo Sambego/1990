@@ -11,7 +11,8 @@ import {
   Browser,
   Code,
   Video,
-  Highlight
+  Highlight,
+  Footer
 } from "@sambego/diorama";
 
 import AnnoyingForm from "./Components/Annoying";
@@ -74,8 +75,11 @@ class App extends Component {
       "publicKey: {\n  ...\n  userVerification: 'preferred',\n  ...\n}";
     const resCredcode =
       "publicKey: {\n  ...\n  authenticatorSelection: {  \n    ...\n    requireResidentKey: true\n  },\n  ...\n }";
+
+    const footer = <Footer left="@sambego" right="http://1990.sambego.tech&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" />
+
     return (
-      <Deck navigation>
+      <Deck navigation footer={footer}>
         <Slide style={{ background: "#99c794", color: "#fff" }}>
           <Video src={future} loop autoplay full color="#99c794" style={{overflow: 'hidden'}}/>
           <Title style={{ color: "#ffffff", position: "relative", zIndex: 1 }}>

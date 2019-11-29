@@ -16,7 +16,8 @@ const Webauthn = ({ platform }) => {
       name: "Auth0"
     },
     attestation: "direct",
-    authenticatorSelection: {},
+    authenticatorSelection: {
+    },
     pubKeyCredParams: [
       {
         type: "public-key",
@@ -41,7 +42,9 @@ const Webauthn = ({ platform }) => {
     displayName: "Sambego"
   };
 
-  const handleRegister = () => {
+  const handleRegister = e => {
+    e.preventDefault();
+
     navigator.credentials
       .create({
         publicKey: {
@@ -50,14 +53,22 @@ const Webauthn = ({ platform }) => {
         }
       })
       .then(response =>
-        window.alert(`Login successfull, public key: ${response.id}`)
+        window.alert(`Login successfull!\n\nThe challenge was signed using the private key with ID: \n----------------------------------------------------------------${response.id}`)
       );
   };
 
   return (
-    <button className="button" onClick={handleRegister}>
-      Log in
-    </button>
+    <form onSubmit={handleRegister} className="form" style={{border: '2px solid #b6c9a8', borderRadius: '10px', padding: '5rem', boxShadow: '0 0 30px 5px rgba(0, 0, 0, 0.1)'}}>
+      <input
+        type="text"
+        defaultValue="Sambego"
+        placeholder="Username"
+        className="input"
+      />
+      <button className="button" type="submit">
+        Log in
+      </button>
+    </form>
   );
 };
 

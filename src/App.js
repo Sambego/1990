@@ -19,6 +19,7 @@ import AnnoyingForm from "./Components/Annoying";
 import Webauthn from "./Components/Webauthn";
 
 import Sam from "./img/sam.png";
+import NPM from "./video/npm.mp4";
 import Poes from "./img/poes.jpg";
 import Pattern from "./img/pattern.png";
 import Pattern2 from "./img/pattern-2.png";
@@ -105,6 +106,10 @@ class App extends Component {
               </List>
             </div>
           </Columns>
+        </Slide>
+        <Slide>
+          <video src={NPM} autoPlay style={{height: '80vh'}}></video>
+          <Text><span style={{fontFamily: 'monospace'}}>npx @sambego/about-me</span></Text>
         </Slide>
         <Slide>
           <Image

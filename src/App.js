@@ -91,7 +91,8 @@ class App extends Component {
     
     return (
       // <Deck navigation footer={footer}>
-      <Deck footer={footer} presenterNotes>
+      // <Deck footer={footer} presenterNotes>
+      <Deck footer={footer} >
         <Slide style={{ background: "#99c794", color: "#fff" }}>
           <Video
             src={future}

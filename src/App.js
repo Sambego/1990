@@ -12,7 +12,7 @@ import {
   Code,
   Video,
   Highlight,
-  Footer
+  Footer,
 } from "@sambego/diorama";
 
 import AnnoyingForm from "./Components/Annoying";
@@ -42,7 +42,13 @@ import Webauthn6 from "./img/webauthn-6.svg";
 import Webauthn7 from "./img/webauthn-7.svg";
 import Webauthn8 from "./img/webauthn-8.svg";
 import cc from "./img/cc.svg";
+import IOSReg from "./img/IOS-reg.png";
+import IOSLogin from "./img/IOS-login.png";
+import ChromeManageCreds from "./img/chrome-manage-creds.png";
+import YubicoManager from "./img/yubico-manager.png";
+import Joel from "./img/joel.jpg";
 
+import Trezor from "./video/trezor.mp4";
 import future from "./video/future.mp4";
 
 class App extends Component {
@@ -57,14 +63,12 @@ class App extends Component {
       "publicKey: {\n  ...\n  user: {\n    id: Uint8Array([1, 2, ... 3, 4]),\n    name: 'Sam Bellen',\n    displayName: 'Sambego'\n  },\n  ...\n }";
     const codePubKeyCred =
       "publicKey: {\n  ...\n  pubKeyCredParams: [\n    {  \n      type: 'public-key',\n      alg: -7,\n    }\n  ],\n  ...\n }";
-    const codeTimeout =
-      "publicKey: {\n  ...\n  timeout: 15000,\n  ...\n }";
+    const codeTimeout = "publicKey: {\n  ...\n  timeout: 15000,\n  ...\n }";
     const codeExclude =
       "publicKey: {\n  ...\n  excludeCredentials: [\n    {\n      type: 'public-key',\n      id: Uint8Array([4, 3, ... 2, 1]),\n      transports: ['USB', 'NFC', 'BLE', 'internal']\n    },\n  ...\n }";
     const code5 =
       "publicKey: {\n  ...\n  authenticatorSelection: {  \n    authenticatorAttachment: 'platform',\n    userVerification: 'preferred'\n    requireResidentKey: true,\n  },\n  ...\n }";
-    const code6 =
-      "publicKey: {\n  ...\n  attestation: 'direct',\n  ...\n }";
+    const code6 = "publicKey: {\n  ...\n  attestation: 'direct',\n  ...\n }";
     const code7 =
       "navigator.credentials.get({\n  publicKey: {\n    ...\n  }\n});";
     const code8 = "const getConfig = {\n  publicKey: {\n    ...\n  }\n}";
@@ -76,18 +80,41 @@ class App extends Component {
       "publicKey: {\n  ...\n  userVerification: 'preferred',\n  ...\n}";
     const resCredcode =
       "publicKey: {\n  ...\n  authenticatorSelection: {  \n    ...\n    requireResidentKey: true\n  },\n  ...\n }";
-
-    const footer = <Footer left="@sambego" right="https://1990.sambego.tech&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" />
-    // const footer = <Footer left="@sambego" right="https://1990.sambego.tech" />
-
+    const isAvailableCode =
+      "PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();";
+      const createBackend1 = "{\n  \"rawId\": \"010d...8c\",\n  \"id\": \"AQ...ow\",\n  \"type\": \"public-key\",\n  \"response\": {\n    \"clientDataJSON\": {...},\n    \"attestationObject\": {...}\n  }\n}";
+      const createBackend2 = "{\n  \"clientDataJSON\": {\n    \"type\": \"webauthn.create\",\n    \"challenge\": \"FuRfP7QOl...RiHq3iytg\",\n    \"origin\": \"https://webauthn.me\",\n    \"crossOrigin\": false,\n  }\n}";
+      const createBackend3 = "{\n  \"attestationObject\": {\n    \"fmt\": \"none\",\n    \"attStmt\": {...},\n    \"authData\": {\n      \"rpIdHash\": \"f9...ad\",\n      \"flags\": {...},\n      \"attestedCredentialData\": {\n        \"credentialPublicKey\": {\n          \"kty\": \"EC\",\n          \"alg\": \"ECDSA_w_SHA256\",\n          \"crv\": \"P-256\",\n          \"x\": \"ig...JvGg=\",\n          \"y\": \"PK...06c4=\"\n        }\n      }\n    }\n  }\n}";
+      const getBackend = "{\n  \"signature\": \"304...85c\",\n  \"userHandle\": \"5b4...d98\",\n  \"clientDataJSON\": {\n    \"type\": \"webauthn.get\",\n    \"challenge\": \"FuRfP7QOlAWW6moq2oU4MR9Mlxi6pJ3LqJRiHq3iytg\",\n    \"origin\": \"https://webauthn.me\",\n    \"crossOrigin\": false\n  },\n  \"authenticatorData\": {\n    \"rpIdHash\": \"f95...cd2e1ad\",\n    \"signCount\": 1600698991\n  }\n}";
+    // const footer = <Footer left="@sambego" right="1990.sambego.tech&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" />
+    const footer = <Footer left="@sambego" right="1990.sambego.tech" />;
+    
     return (
-      <Deck navigation footer={footer}>
+      // <Deck navigation footer={footer}>
+      <Deck footer={footer} presenterNotes>
         <Slide style={{ background: "#99c794", color: "#fff" }}>
-          <Video src={future} loop autoplay full color="#99c794" style={{overflow: 'hidden', zIndex: 1}}/>
+          <Video
+            src={future}
+            loop
+            autoplay
+            full
+            color="#99c794"
+            style={{ overflow: "hidden", zIndex: 1 }}
+          />
           <Title style={{ color: "#ffffff", position: "relative", zIndex: 1 }}>
             Passwords are so 1990
           </Title>
-          <Image src={cc} style={{position: 'fixed', bottom: '2rem', left: '2rem', width: '10%', zIndex: 2}} alt="Creative commons" />
+          <Image
+            src={cc}
+            style={{
+              position: "fixed",
+              bottom: "2rem",
+              left: "2rem",
+              width: "10%",
+              zIndex: 2,
+            }}
+            alt="Creative commons"
+          />
         </Slide>
         <Slide>
           <Columns>
@@ -97,21 +124,22 @@ class App extends Component {
             <div>
               <Subtitle>Sam Bellen</Subtitle>
               <List>
-                <li>Developer Advocate Engineer</li>
-                <li>Auth0</li>
+                <li>Senior Developer Advocate Engineer at Auth0</li>
                 <li>Google Developer Expert</li>
-                <li>Fronteers</li>
-                <li>I&S London</li>
                 <li>@sambego</li>
               </List>
             </div>
           </Columns>
         </Slide>
         <Slide>
-          <video src={NPM} autoPlay style={{height: '80vh'}}></video>
-          <Text><span style={{fontFamily: 'monospace'}}>npx @sambego/about-me</span></Text>
+          <video src={NPM} autoPlay style={{ height: "80vh" }}></video>
+          <Text>
+            <span style={{ fontFamily: "monospace" }}>
+              npx @sambego/about-me
+            </span>
+          </Text>
         </Slide>
-        <Slide>
+        {/* <Slide>
           <Image
             src={Poes}
             alt="I've got cat stickers, tweet me @sambego"
@@ -125,15 +153,15 @@ class App extends Component {
               top: "50%",
               transform: "translate3d(-50%, -50%, 0)",
               color: "#fff",
-              margin: 0
+              margin: 0,
             }}
           >
             Tweet me @sambego
           </Subtitle>
-        </Slide>
+        </Slide> */}
         <Slide>
           <List>
-            <Subtitle>Summary</Subtitle>
+            <Subtitle style={{ display: "inline-block" }}>Summary</Subtitle>
             <li>A bit of history on passwords</li>
             <li>Types of passwords</li>
             <li>Passwordless authentication</li>
@@ -150,7 +178,7 @@ class App extends Component {
               background: "#99c794",
               color: "#fff",
               padding: "1rem 3rem",
-              marginBottom: "4rem"
+              marginBottom: "4rem",
             }}
           >
             Somewhere BC
@@ -163,7 +191,7 @@ class App extends Component {
               background: "#99c794",
               color: "#fff",
               padding: "1rem 3rem",
-              marginBottom: "4rem"
+              marginBottom: "4rem",
             }}
           >
             10th century
@@ -179,13 +207,14 @@ class App extends Component {
               background: "#99c794",
               color: "#fff",
               padding: "1rem 3rem",
-              marginBottom: "4rem"
+              marginBottom: "4rem",
             }}
           >
             1961
           </Subtitle>
           <Subtitle>
-            Fernando Corbató<br />-<br /> Time-Sharing System
+            Fernando Corbató
+            <br />-<br /> Time-Sharing System
           </Subtitle>
         </Slide>
         <Slide notes="Working for Bell Labs in the 70s, cryptographer Robert Morris Sr. devised “hashing”, the process by which a string of characters is transformed into a numerical code that represents the original phrase. This has the effect of not having to store the actual password itself in the password database. Hashing was adopted in early unix-like operating systems, which are widely used today across the world in mobile devices and workstations. Apple’s macOS, for example, uses unix, while the PlayStation 4 uses Orbis OS, a unix-like operating system.">
@@ -194,13 +223,14 @@ class App extends Component {
               background: "#99c794",
               color: "#fff",
               padding: "1rem 3rem",
-              marginBottom: "4rem"
+              marginBottom: "4rem",
             }}
           >
             1970s
           </Subtitle>
           <Subtitle>
-            Robert Morris Sr<br /> -<br /> Hashing
+            Robert Morris Sr
+            <br /> -<br /> Hashing
           </Subtitle>
         </Slide>
         <Slide notes="When the web exploded in the 90s more and more public facing systems started popping up. Of course they became a target of people with bad intentions and hacking became more of an issue. Issues like hashing and salting help create a more secure way to store passwords.">
@@ -209,7 +239,7 @@ class App extends Component {
               background: "#99c794",
               color: "#fff",
               padding: "1rem 3rem",
-              marginBottom: "4rem"
+              marginBottom: "4rem",
             }}
           >
             1990s
@@ -232,7 +262,7 @@ class App extends Component {
               background: "#99c794",
               padding: "1rem 2rem",
               marginBottom: "4rem",
-              fontWeight: "bold"
+              fontWeight: "bold",
             }}
           >
             A string
@@ -245,7 +275,7 @@ class App extends Component {
               background: "#99c794",
               padding: "1rem 2rem",
               marginBottom: "4rem",
-              fontWeight: "bold"
+              fontWeight: "bold",
             }}
           >
             A string
@@ -261,16 +291,19 @@ class App extends Component {
               background: "#99c794",
               padding: "1rem 2rem",
               marginBottom: "4rem",
-              fontWeight: "bold"
+              fontWeight: "bold",
             }}
           >
             A string
           </Text>
-          <Subtitle style={{fontSize: "6rem"}}>Zbety6FZiH6XNn3dsziGRB6+MBGDYU?</Subtitle>
+          <Subtitle style={{ fontSize: "6rem" }}>
+            Zbety6FZiH6XNn3dsziGRB6+MBGDYU?
+          </Subtitle>
         </Slide>
         <Slide>
           <Subtitle style={{ color: "#ec5f67" }}>
-            Can be hard to remember if complex<br />
+            Can be hard to remember if complex
+            <br />
             <br /> <Text>A passwordmanager can help!</Text>
           </Subtitle>
         </Slide>
@@ -286,7 +319,7 @@ class App extends Component {
               background: "#99c794",
               padding: "1rem 2rem",
               marginBottom: "4rem",
-              fontWeight: "bold"
+              fontWeight: "bold",
             }}
           >
             A pincode
@@ -295,7 +328,8 @@ class App extends Component {
         </Slide>
         <Slide>
           <Subtitle style={{ color: "#ec5f67" }}>
-            Not so hard to guess <br />
+            Not so hard to guess
+            <br />
             <br />
             <Text>Often combined with a maximum allowed number of guesses</Text>
           </Subtitle>
@@ -318,7 +352,7 @@ class App extends Component {
               background: "#99c794",
               padding: "1rem 2rem",
               marginBottom: "4rem",
-              fontWeight: "bold"
+              fontWeight: "bold",
             }}
           >
             A pattern
@@ -331,7 +365,7 @@ class App extends Component {
               background: "#99c794",
               padding: "1rem 2rem",
               marginBottom: "4rem",
-              fontWeight: "bold"
+              fontWeight: "bold",
             }}
           >
             A pattern
@@ -371,31 +405,39 @@ class App extends Component {
         <Slide notes="Fortunately in the data breaches I’ll highlight in the next slides, no raw, plain text passwords were stolen. But still not all companies treat passwords as they should!">
           <Subtitle>User data can get stolen</Subtitle>
         </Slide>
+
         <Slide notes="Private data, no passwords">
+          <Subtitle style={{ color: "#99c794" }}>January 2019</Subtitle>
           <Subtitle>
-            Google+<br /> -<br /> 52.5 million
+            Marriott Hotels
+            <br /> -<br /> 383 million
           </Subtitle>
         </Slide>
-        <Slide notes="Private data, no passwords">
+        <Slide notes="including 22,000 passwords stored in plain text">
+          <Subtitle style={{ color: "#99c794" }}>April 2019</Subtitle>
           <Subtitle>
-            Cambridge Analytica (Facebook)<br /> -<br /> 87 million
+            Facebook <br /> -<br /> 540 million
           </Subtitle>
         </Slide>
-        <Slide notes="Private data, encrypted passwords">
+        <Slide notes="Personal data, Credit cards in the open">
+          <Subtitle style={{ color: "#99c794" }}>August 2019</Subtitle>
           <Subtitle>
-            Quora<br /> -<br /> 100 million
+            MoviePass <br /> -<br /> 160 million
           </Subtitle>
         </Slide>
-        <Slide notes="Private data, encrypted passwords">
+        <Slide notes="Personal data, no passwords">
+          <Subtitle style={{ color: "#99c794" }}>Septemner 2019</Subtitle>
           <Subtitle>
-            MyFitnessPal<br /> -<br /> 150 million
+            Words with Friends <br /> -<br /> 218 million
           </Subtitle>
         </Slide>
-        <Slide notes="Private data, no passwords">
+        <Slide notes="personal data, including email addresses, employers, locations, job titles, names, phone numbers and social media profiles, no passwords">
+          <Subtitle style={{ color: "#99c794" }}>Oktober 2019</Subtitle>
           <Subtitle>
-            Marriott Hotels<br /> -<br /> 500 million
+            People Data Labs <br /> -<br /> 1.2 billion
           </Subtitle>
         </Slide>
+
         <Slide>
           <Image src={BreachedPW} alt="Auth0 breached password protection" />
         </Slide>
@@ -411,6 +453,7 @@ class App extends Component {
             <li>Change passwords frequently</li>
           </List>
         </Slide>
+
         <Slide notes="Fast forward some more, enter password less">
           <Image src={FastForward} alt="Fast Forward" />
         </Slide>
@@ -643,7 +686,7 @@ class App extends Component {
 
         <Slide>
           <Subtitle>To recap, registering</Subtitle>
-          <List style={{padding: "0 50px"}}>
+          <List style={{ padding: "0 50px" }}>
             <li>Request a challenge</li>
             <li>Sign that challenge</li>
             <li>Send back the signed challenge, raw ID and public key</li>
@@ -652,10 +695,13 @@ class App extends Component {
         </Slide>
         <Slide>
           <Subtitle>To recap, authenticating</Subtitle>
-          <List style={{padding: "0 50px"}}>
+          <List style={{ padding: "0 50px" }}>
             <li>Request a challenge</li>
             <li>Request the raw ID for the user</li>
-            <li>Sign that challenge using the same private key used when registering</li>
+            <li>
+              Sign that challenge using the same private key used when
+              registering
+            </li>
             <li>Send the signed challenge back</li>
           </List>
         </Slide>
@@ -664,12 +710,18 @@ class App extends Component {
           <Subtitle>Let's look at some code</Subtitle>
         </Slide>
         <Slide>
+          <Subtitle>Check if the browser supports WebAuthn</Subtitle>
+        </Slide>
+        <Slide>
+          <Code code={isAvailableCode} />
+        </Slide>
+        <Slide>
           <Subtitle>Create new credentials</Subtitle>
         </Slide>
         <Slide>
           <Code code={code1} />
         </Slide>
-        <Slide  notes="The challenge is a buffer of randomly generated bytes with a minimum of 16 bytes. This is generated on the server using a cryptographically secure random number generator. By generating the challenge on the server we can prevent 'replay attacks'. The authenticator will sign this along with other data.">
+        <Slide notes="The challenge is a buffer of randomly generated bytes with a minimum of 16 bytes. This is generated on the server using a cryptographically secure random number generator. By generating the challenge on the server we can prevent 'replay attacks'. The authenticator will sign this along with other data.">
           <Code code={code2} />
         </Slide>
         <Slide notes="This is the entity which is responsible for handling all things authentication, usually your authorization server or identity provider (IdP). The id must be the current domain or a subset of it. The name is used to describe the relying party.">
@@ -680,7 +732,14 @@ class App extends Component {
         </Slide>
         <Slide notes="This is a collection of accepted public key types. The algorithm (alg) is a number that references a key type in this list of COSE algorithms.">
           <Code code={codePubKeyCred} />
-          <p style={{marginTop: '3rem', fontSize: '3rem'}}><a href="https://www.iana.org/assignments/cose/cose.xhtml#algorithms" target="_blank">https://www.iana.org/assignments/cose/cose.xhtml#algorithms</a></p>
+          <p style={{ marginTop: "3rem", fontSize: "3rem" }}>
+            <a
+              href="https://www.iana.org/assignments/cose/cose.xhtml#algorithms"
+              target="_blank"
+            >
+              https://www.iana.org/assignments/cose/cose.xhtml#algorithms
+            </a>
+          </p>
         </Slide>
         <Slide notes="Defines the maximum time in milliseconds the user has to complete the registration action. This can be touching their authenticator device, TouchID or any other method used to interact with an authenticator.">
           <Code code={codeTimeout} />
@@ -712,6 +771,40 @@ class App extends Component {
         </Slide>
 
         <Slide>
+          <Subtitle>So what to do on the backend?</Subtitle>
+        </Slide>
+        <Slide>
+          <Subtitle>When creating a new credential</Subtitle>
+        </Slide>
+        <Slide>
+          <Code code={createBackend1} />
+        </Slide>
+        <Slide>
+          <Code code={createBackend2} />
+        </Slide>
+        <Slide>
+          <Code code={createBackend3} />
+        </Slide>
+        <Slide>
+          <List>
+            <li>Validate the returned authenticator data (is there an ID?)</li>
+            <li>Validate the returned client data (challenge, origin, ...)</li>
+            <li>(Validate the returned attestation data)</li>
+            <li>Save the credential ID and pulic key data</li>
+          </List>
+        </Slide>
+        <Slide><Subtitle>When verifying an existing credential</Subtitle></Slide>
+        <Slide>
+          <Code code={getBackend} />
+        </Slide>
+        <Slide>
+          <List>
+            <li>Validate user and credential</li>
+            <li>Validate the returned signature</li>
+          </List>
+        </Slide>
+
+        <Slide>
           <Subtitle>Resident credentials</Subtitle>
         </Slide>
         <Slide>
@@ -728,10 +821,28 @@ class App extends Component {
         </Slide>
 
         <Slide>
+          <video src={Trezor} autoPlay style={{ height: "80vh" }}></video>
+        </Slide>
+
+        <Slide>
           <Subtitle>Some issues still to be solved</Subtitle>
         </Slide>
         <Slide>
           <Subtitle>User credential management</Subtitle>
+        </Slide>
+        <Slide>
+          <Image
+            src={ChromeManageCreds}
+            alt="Chrome can manage some data"
+            style={{ objectFit: "contain" }}
+          />
+        </Slide>
+        <Slide>
+          <Image
+            src={YubicoManager}
+            alt="Yubico manager"
+            style={{ objectFit: "contain" }}
+          />
         </Slide>
         <Slide>
           <Subtitle>Cross devices credentials</Subtitle>
@@ -741,12 +852,18 @@ class App extends Component {
         </Slide>
 
         <Slide>
-          <Subtitle>Webauthn <Highlight>might</Highlight> replace Passwords</Subtitle>
+          <Subtitle>
+            Webauthn <Highlight>might</Highlight> replace Passwords
+          </Subtitle>
         </Slide>
         <Slide>
-          <Subtitle>Webauthn does <Highlight>not</Highlight> replace</Subtitle>
+          <Subtitle>
+            Webauthn does <Highlight>not</Highlight> replace
+          </Subtitle>
           <List>
-            <li>Token based authentication / authorization (OAuth, OIDC, ...)</li>
+            <li>
+              Token based authentication / authorization (OAuth, OIDC, ...)
+            </li>
             <li>Identity providers (Auth0)</li>
             <li>...</li>
           </List>
@@ -760,19 +877,23 @@ class App extends Component {
             <li>Chrome 67</li>
             <li>Firefox 60</li>
             <li>Edge 17723</li>
-            <li>Safari Tech Preview (behind a flag)</li>
+            <li>Safari 14</li>
           </List>
         </Slide>
         <Slide>
-          <List>
-            <li>Chrome 67</li>
-            <li>Firefox 60</li>
-            <li>Edge 17723</li>
-            <li style={{textDecoration: 'line-through'}}>Safari Tech Preview (behind a flag)</li>
-            <li>Safari 13</li>
-          </List>
+          <Image
+            src={IOSReg}
+            alt="iOS let's you use authenticator devices"
+            style={{ objectFit: "contain" }}
+          />
         </Slide>
-
+        <Slide>
+          <Image
+            src={IOSLogin}
+            alt="iOS let's you use authenticator devices"
+            style={{ objectFit: "contain" }}
+          />
+        </Slide>
         <Slide>
           <Subtitle>So where can I use this already?</Subtitle>
         </Slide>
@@ -786,12 +907,18 @@ class App extends Component {
         <Slide>
           <List>
             <li>
-              <a href="https://support.google.com/accounts/answer/6103523?co=GENIE.Platform%3DAndroid&hl=en" target="_blank">
+              <a
+                href="https://support.google.com/accounts/answer/6103523?co=GENIE.Platform%3DAndroid&hl=en"
+                target="_blank"
+              >
                 https://support.google.com/accounts/answer/6103523?co=GENIE.Platform%3DAndroid&hl=en
               </a>
             </li>
             <li>
-              <a href="https://github.blog/2019-08-21-github-supports-webauthn-for-security-keys/" target="_blank">
+              <a
+                href="https://github.blog/2019-08-21-github-supports-webauthn-for-security-keys/"
+                target="_blank"
+              >
                 https://github.blog/2019-08-21-github-supports-webauthn-for-security-keys/
               </a>
             </li>
@@ -832,20 +959,30 @@ class App extends Component {
               </a>
             </li>
             <li>
-              <a href="https://auth0.com/blog/enhancing-webauthn-me-with-the-online-debugger-tool/" target="_blank">
+              <a
+                href="https://auth0.com/blog/enhancing-webauthn-me-with-the-online-debugger-tool/"
+                target="_blank"
+              >
                 https://auth0.com/blog/enhancing-webauthn-me-with-the-online-debugger-tool/
               </a>
             </li>
             <li>
-              <a href="https://auth0.com/blog/a-look-at-webauthn-resident-credentials/" target="_blank">
+              <a
+                href="https://auth0.com/blog/a-look-at-webauthn-resident-credentials/"
+                target="_blank"
+              >
                 https://auth0.com/blog/a-look-at-webauthn-resident-credentials/
               </a>
             </li>
           </List>
         </Slide>
         <Slide>
+          <Subtitle>https://developer.apple.com/videos/play/wwdc2020/10670/</Subtitle>
+        </Slide>
+        <Slide>
           <Subtitle>https://1990.sambego.tech</Subtitle>
         </Slide>
+
         <Slide>
           <Subtitle>Thanks!</Subtitle>
         </Slide>

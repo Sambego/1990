@@ -30,7 +30,7 @@ import Social from "./img/social.png";
 import AUthenticators from "./img/authenticators.jpg";
 import FastForward from "./img/fast-forward.svg";
 import BreachedPW from "./img/breached-pw.png";
-import Checkup from "./img/checkup.png";
+import Checkup from "./img/checkup2.png";
 import Guardian from "./img/guardian.png";
 import GoogleAuthenticatorExp from "./img/google-authenticator-exp.png";
 import Webauthn1 from "./img/webauthn-1.svg";
@@ -41,12 +41,18 @@ import Webauthn5 from "./img/webauthn-5.svg";
 import Webauthn6 from "./img/webauthn-6.svg";
 import Webauthn7 from "./img/webauthn-7.svg";
 import Webauthn8 from "./img/webauthn-8.svg";
+import Webauthn9 from "./img/webauthn-9.svg";
+import Webauthn10 from "./img/webauthn-10.svg";
 import cc from "./img/cc.svg";
 import IOSReg from "./img/IOS-reg.png";
 import IOSLogin from "./img/IOS-login.png";
 import ChromeManageCreds from "./img/chrome-manage-creds.png";
 import YubicoManager from "./img/yubico-manager.png";
 import Joel from "./img/joel.jpg";
+import Debugger from "./img/debugger.png";
+import Auth0Webauthn1 from "./img/Auth0-webauthn-1.png";
+import Auth0Webauthn2 from "./img/Auth0-webauthn-2.png";
+import Auth0Webauthn3 from "./img/Auth0-webauthn-3.png";
 
 import Trezor from "./video/trezor.mp4";
 import future from "./video/future.mp4";
@@ -91,8 +97,8 @@ class App extends Component {
     
     return (
       // <Deck navigation footer={footer}>
-      // <Deck footer={footer} presenterNotes>
       <Deck footer={footer} >
+      {/* <Deck footer={footer} > */}
         <Slide style={{ background: "#99c794", color: "#fff" }}>
           <Video
             src={future}
@@ -132,14 +138,14 @@ class App extends Component {
             </div>
           </Columns>
         </Slide>
-        <Slide>
+        {/* <Slide>
           <video src={NPM} autoPlay style={{ height: "80vh" }}></video>
           <Text>
             <span style={{ fontFamily: "monospace" }}>
               npx @sambego/about-me
             </span>
           </Text>
-        </Slide>
+        </Slide> */}
         {/* <Slide>
           <Image
             src={Poes}
@@ -448,10 +454,9 @@ class App extends Component {
         <Slide>
           <Subtitle>Tips for a good password</Subtitle>
           <List>
-            <li>Use a complex password</li>
+            <li>Use a reasonably long password</li>
             <li>Don’t use personal data</li>
             <li>Don’t reuse passwords</li>
-            <li>Change passwords frequently</li>
           </List>
         </Slide>
 
@@ -544,6 +549,7 @@ class App extends Component {
             <li>Lastpass Authenticator</li>
             <li>Authy</li>
             <li>Microsoft Authenticator</li>
+            <li>1Password*</li>
           </List>
         </Slide>
         <Slide>
@@ -679,10 +685,10 @@ class App extends Component {
           <Image src={Webauthn4} alt="Webauthn schema" />
         </Slide>
         <Slide>
-          <Image src={Webauthn5} alt="Webauthn schema" />
+          <Image src={Webauthn9} alt="Webauthn schema" />
         </Slide>
         <Slide>
-          <Image src={Webauthn6} alt="Webauthn schema" />
+          <Image src={Webauthn10} alt="Webauthn schema" />
         </Slide>
 
         <Slide>
@@ -690,7 +696,7 @@ class App extends Component {
           <List style={{ padding: "0 50px" }}>
             <li>Request a challenge</li>
             <li>Sign that challenge</li>
-            <li>Send back the signed challenge, raw ID and public key</li>
+            <li>Send back the signed challenge, <br/>public key and private key ID</li>
             <li>Save this data together with a username</li>
           </List>
         </Slide>
@@ -698,7 +704,7 @@ class App extends Component {
           <Subtitle>To recap, authenticating</Subtitle>
           <List style={{ padding: "0 50px" }}>
             <li>Request a challenge</li>
-            <li>Request the raw ID for the user</li>
+            <li>Request the private key ID for the user</li>
             <li>
               Sign that challenge using the same private key used when
               registering
@@ -783,14 +789,14 @@ class App extends Component {
         <Slide>
           <Code code={createBackend2} />
         </Slide>
-        <Slide>
+        <Slide notes="attStmt: lets call it the signature, Flags contain more info like was the user preset, was the user verified">
           <Code code={createBackend3} />
         </Slide>
         <Slide>
           <List>
             <li>Validate the returned authenticator data (is there an ID?)</li>
             <li>Validate the returned client data (challenge, origin, ...)</li>
-            <li>(Validate the returned attestation data)</li>
+            <li>Validate the returned attestation data</li>
             <li>Save the credential ID and pulic key data</li>
           </List>
         </Slide>
@@ -800,7 +806,7 @@ class App extends Component {
         </Slide>
         <Slide>
           <List>
-            <li>Validate user and credential</li>
+            <li>Validate user, challenge, and origin</li>
             <li>Validate the returned signature</li>
           </List>
         </Slide>
@@ -812,6 +818,9 @@ class App extends Component {
           <Code code={resCredcode} />
         </Slide>
         <Slide>
+          <Image contain src={Debugger} alt="Chrome devtools WebAuthn debugger" />
+        </Slide>
+        <Slide>
           <List>
             <li>
               <a href="https://webauthn.me/debugger" target="_blank">
@@ -820,11 +829,22 @@ class App extends Component {
             </li>
           </List>
         </Slide>
-
         <Slide>
-          <video src={Trezor} autoPlay style={{ height: "80vh" }}></video>
+          <Subtitle>What are the benefits of WebAuthn</Subtitle>
         </Slide>
-
+        <Slide>
+          <List>
+            <li>
+              Private/Public Key based authentication
+            </li>
+            <li>Phishing resistant</li>
+            <li>You only store public data in you database</li>
+            <li>Fine-grained controll which kind of credentials to allow</li>
+            <li>Better user experience</li>
+            <li><strong>No more passwords!</strong></li>
+          </List>
+        </Slide>
+        
         <Slide>
           <Subtitle>Some issues still to be solved</Subtitle>
         </Slide>
@@ -846,7 +866,7 @@ class App extends Component {
           />
         </Slide>
         <Slide>
-          <Subtitle>Cross devices credentials</Subtitle>
+          <Subtitle>Cross device credentials</Subtitle>
         </Slide>
         <Slide>
           <Subtitle>Lost/stolen authenticator device recovery</Subtitle>
@@ -875,57 +895,32 @@ class App extends Component {
         </Slide>
         <Slide>
           <List>
-            <li>Chrome 67</li>
-            <li>Firefox 60</li>
-            <li>Edge 17723</li>
-            <li>Safari 14</li>
+            <li>Chrome</li>
+            <li>Firefox</li>
+            <li>Edge</li>
+            <li>Safari</li>
           </List>
-        </Slide>
-        <Slide>
-          <Image
-            src={IOSReg}
-            alt="iOS let's you use authenticator devices"
-            style={{ objectFit: "contain" }}
-          />
-        </Slide>
-        <Slide>
-          <Image
-            src={IOSLogin}
-            alt="iOS let's you use authenticator devices"
-            style={{ objectFit: "contain" }}
-          />
         </Slide>
         <Slide>
           <Subtitle>So where can I use this already?</Subtitle>
         </Slide>
         <Slide>
           <List>
+            <li>Auth0</li>
             <li>Google</li>
             <li>Github</li>
             <li>...</li>
           </List>
         </Slide>
         <Slide>
-          <List>
-            <li>
-              <a
-                href="https://support.google.com/accounts/answer/6103523?co=GENIE.Platform%3DAndroid&hl=en"
-                target="_blank"
-              >
-                https://support.google.com/accounts/answer/6103523?co=GENIE.Platform%3DAndroid&hl=en
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://github.blog/2019-08-21-github-supports-webauthn-for-security-keys/"
-                target="_blank"
-              >
-                https://github.blog/2019-08-21-github-supports-webauthn-for-security-keys/
-              </a>
-            </li>
-          </List>
+            <Image src={Auth0Webauthn1} alt="Auth0 webuathn" />
         </Slide>
-
+        <Slide>
+            <Image src={Auth0Webauthn2} alt="Auth0 webuathn" />
+        </Slide>
+        <Slide>
+            <Image src={Auth0Webauthn3} alt="Auth0 webuathn" />
+        </Slide>
         <Slide>
           <Browser url="https://webauthn.me" />
         </Slide>
@@ -978,10 +973,7 @@ class App extends Component {
           </List>
         </Slide>
         <Slide>
-          <Subtitle>https://developer.apple.com/videos/play/wwdc2020/10670/</Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle>https://1990.sambego.tech</Subtitle>
+          <Subtitle>1990.sambego.tech</Subtitle>
         </Slide>
 
         <Slide>

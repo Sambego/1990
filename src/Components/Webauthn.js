@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 import styles from "./Form.css";
+import {Subtitle} from '@sambego/diorama';
 
-const Webauthn = ({ platform }) => {
+const Webauthn = ({ platform, resident }) => {
+  const [success, setSuccess] = useState(false);
+  const [response, setResponse] = useState();
   const createRandomUIntArray = () => {
     const arr = new Uint8Array(32);
     crypto.getRandomValues(arr);
@@ -13,7 +16,12 @@ const Webauthn = ({ platform }) => {
   const attestationOptions = {
     challenge: createRandomUIntArray(),
     rp: {
-      name: "Auth0"
+      name: "Auth0",
+    },
+    user: {
+      id: createRandomUIntArray(),
+      name: "Sam Bellen",
+      displayName: "Sambego"
     },
     attestation: "direct",
     authenticatorSelection: {
@@ -30,45 +38,80 @@ const Webauthn = ({ platform }) => {
     attestationOptions.authenticatorSelection = {
       authenticatorAttachment: "platform"
     };
-  } else {
+  } else if (!resident) {
     attestationOptions.authenticatorSelection = {
       authenticatorAttachment: "cross-platform"
     };
   }
 
-  const user = {
-    id: createRandomUIntArray(),
-    name: "Sam Bellen",
-    displayName: "Sambego"
-  };
+  // if (resident) {
+  //   attestationOptions.authenticatorSelection = {
+  //     rerquireResidentKey: true,
+  //   };
+  // }
 
   const handleRegister = e => {
     e.preventDefault();
 
+    // if (resident) {
+    //   navigator.credentials.get({
+    //     publicKey: {
+    //       challenge: createRandomUIntArray()
+    //     }
+    //   }).then(response => {
+    //     console.log(response);
+
+    //     setSuccess(true);
+    //     setResponse(response.id);
+    //   }).catch(error => console.error(error));;
+      
+    // } else {
     navigator.credentials
       .create({
         publicKey: {
           ...attestationOptions,
-          user
         }
       })
-      .then(response =>
-        window.alert(`Login successfull!\n\nThe challenge was signed using the private key with ID: \n----------------------------------------------------------------${response.id}`)
-      );
+      .then(response =>{
+        console.log(response);
+        setSuccess(true);
+        setResponse(response.id);
+      }).catch(error => console.error(error));
+    // }
   };
 
   return (
-    <form onSubmit={handleRegister} className="form" style={{border: '2px solid #b6c9a8', borderRadius: '10px', padding: '5rem', boxShadow: '0 0 30px 5px rgba(0, 0, 0, 0.1)'}}>
-      <input
-        type="text"
-        defaultValue="Sambego"
-        placeholder="Username"
-        className="input"
-      />
-      <button className="button" type="submit">
-        Log in
-      </button>
-    </form>
+    <>
+      {!success && <form onSubmit={handleRegister} className="form" style={{border: '2px solid #b6c9a8', borderRadius: '10px', padding: '5rem', boxShadow: '0 0 30px 5px rgba(0, 0, 0, 0.1)'}}>
+        {!resident && <input
+          type="text"
+          defaultValue="Sambego"
+          placeholder="Username"
+          className="input"
+        />}
+        <button className="button" type="submit">
+          Log in
+        </button>
+      </form>
+      }
+
+      {success && <>
+        <Subtitle>Login successfull!</Subtitle>
+        <div style={{
+          padding: '3rem 5rem',
+          fontSize: '4rem',
+          background: '#f4f8f7',
+          border: '2px solid #b6c9a8',
+          borderRadius: '5px',
+          lineHeight: 1,
+          fontFamily: 'monospace',
+          maxWidth: '70%',
+          wordBreak: 'break-all'
+        }}>
+          {JSON.stringify({id: response}, null, 4)}
+        </div>
+      </>}
+    </>
   );
 };
 

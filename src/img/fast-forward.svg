@@ -4,7 +4,7 @@
     <title>Triangle</title>
     <desc>Created with Sketch.</desc>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <polygon id="Triangle" fill="#99C794" transform="translate(118.000000, 169.000000) rotate(90.000000) translate(-118.000000, -169.000000) " points="118 51 287 287 -51 287"></polygon>
-        <polygon id="Triangle" fill="#99C794" transform="translate(350.000000, 169.000000) rotate(90.000000) translate(-350.000000, -169.000000) " points="350 51 519 287 181 287"></polygon>
+        <polygon id="Triangle" fill="#000000" transform="translate(118.000000, 169.000000) rotate(90.000000) translate(-118.000000, -169.000000) " points="118 51 287 287 -51 287"></polygon>
+        <polygon id="Triangle" fill="#000000" transform="translate(350.000000, 169.000000) rotate(90.000000) translate(-350.000000, -169.000000) " points="350 51 519 287 181 287"></polygon>
     </g>
 </svg>

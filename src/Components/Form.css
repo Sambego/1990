@@ -12,9 +12,9 @@
   padding: 5rem 3rem;
   font-size: 4rem;
 
-  background: #f4f8f7;
+  background: #d9eafa;
 
-  border: 2px solid #b6c9a8;
+  border: 2px solid #6fa9e2;
   border-radius: 5px;
 }
 
@@ -28,8 +28,8 @@
   padding: 0 4rem;
   margin: 0 10rem;
 
-  background: #99c794;
-  border: 1px solid #99c794;
+  background: #6699CC;
+  border: 1px solid #6699CC;
   border-radius: 3rem;
   outline: none;
 
@@ -40,8 +40,8 @@
 
   &:hover {
     background: transparent;
-    border-color: #99c794;
-    color: #99c794;
+    border-color: #6699CC;
+    color: #6699CC;
   }
 }
 

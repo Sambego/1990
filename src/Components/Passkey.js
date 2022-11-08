@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import PropTypes from "prop-types";
 import styles from "./Form.css";
 import {Subtitle} from '@sambego/diorama';
 
-const Webauthn = ({ platform, resident }) => {
+const Passkey = ({ register }) => {
   const [success, setSuccess] = useState(false);
   const [response, setResponse] = useState();
   const createRandomUIntArray = () => {
@@ -13,10 +13,10 @@ const Webauthn = ({ platform, resident }) => {
     return arr;
   };
 
-  const attestationOptions = {
+  const attestationOptionsCreate = {
     challenge: createRandomUIntArray(),
     rp: {
-      name: "Auth0",
+      name: "Okta",
     },
     user: {
       id: createRandomUIntArray(),
@@ -33,62 +33,63 @@ const Webauthn = ({ platform, resident }) => {
       }
     ]
   };
-
-  if (platform) {
-    attestationOptions.authenticatorSelection = {
-      authenticatorAttachment: "platform"
-    };
-  } else if (!resident) {
-    attestationOptions.authenticatorSelection = {
-      authenticatorAttachment: "cross-platform"
-    };
-  }
-
-  // if (resident) {
-  //   attestationOptions.authenticatorSelection = {
-  //     rerquireResidentKey: true,
-  //   };
-  // }
+  
+  const attestationOptionsGet = {
+    challenge: createRandomUIntArray(),
+    timeout: 100000,
+    attestation: "direct",
+  };
 
   const handleRegister = e => {
     e.preventDefault();
 
-    // if (resident) {
-    //   navigator.credentials.get({
-    //     publicKey: {
-    //       challenge: createRandomUIntArray()
-    //     }
-    //   }).then(response => {
-    //     console.log(response);
-
-    //     setSuccess(true);
-    //     setResponse(response.id);
-    //   }).catch(error => console.error(error));;
-      
-    // } else {
-    navigator.credentials
-      .create({
-        publicKey: {
-          ...attestationOptions,
-        }
-      })
-      .then(response =>{
-        console.log(response);
-        setSuccess(true);
-        setResponse(response.id);
-      }).catch(error => console.error(error));
-    // }
+    if (register) {
+      navigator.credentials
+        .create({
+          publicKey: {
+            ...attestationOptionsCreate,
+          }
+        })
+        .then(response =>{
+          console.log(response);
+          setSuccess(true);
+          setResponse(response.id);
+        }).catch(error => console.error(error));
+    }
   };
+
+  useEffect(() => {
+    console.log({
+      mediation: 'conditional',
+      publicKey: {
+        ...attestationOptionsGet,
+      }});
+    if (!register) {
+      navigator.credentials
+        .get({
+          mediation: 'conditional',
+          publicKey: {
+            ...attestationOptionsGet,
+          }
+        })
+        .then(response =>{
+          console.log(response);
+          setSuccess(true);
+          setResponse(response.id);
+        }).catch(error => console.error(error));
+    }
+  });
 
   return (
     <>
       {!success && <form onSubmit={handleRegister} className="form" style={{border: '2px solid #6fa9e2', borderRadius: '10px', padding: '5rem', boxShadow: '0 0 30px 5px rgba(0, 0, 0, 0.1)'}}>
-        {!resident && <input
+        <input
           type="text"
-          defaultValue="Sambego"
+          // defaultValue="Sambego"
           placeholder="Username"
           className="input"
-        />}
+          autoComplete="username webauthn"
+        />
         <button className="button" type="submit">
           Log in
         </button>
@@ -115,12 +116,12 @@ const Webauthn = ({ platform, resident }) => {
   );
 };
 
-Webauthn.propTypes = {
-  platform: PropTypes.bool
+Passkey.propTypes = {
+  register: PropTypes.bool
 };
 
-Webauthn.defaultProps = {
-  platform: false
+Passkey.defaultProps = {
+  register: false
 };
 
-export default Webauthn;
+export default Passkey;

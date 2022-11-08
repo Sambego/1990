@@ -17,7 +17,6 @@ import {
 
 import AnnoyingForm from "./Components/Annoying";
 import Webauthn from "./Components/Webauthn";
-import Passkey from "./Components/Passkey";
 
 import Sam from "./img/sam.png";
 import NPM from "./video/npm.mp4";
@@ -77,7 +76,7 @@ class App extends Component {
     const codeExclude =
       "publicKey: {\n  ...\n  excludeCredentials: [\n    {\n      type: 'public-key',\n      id: Uint8Array([4, 3, ... 2, 1]),\n      transports: ['USB', 'NFC', 'BLE', 'internal']\n    },\n  ...\n }";
     const code5 =
-      "publicKey: {\n  ...\n  authenticatorSelection: {  \n    authenticatorAttachment: 'platform',\n    userVerification: 'preferred',\n    requireResidentKey: true,\n  },\n  ...\n }";
+      "publicKey: {\n  ...\n  authenticatorSelection: {  \n    authenticatorAttachment: 'platform',\n    userVerification: 'preferred'\n    requireResidentKey: true,\n  },\n  ...\n }";
     const code6 = "publicKey: {\n  ...\n  attestation: 'direct',\n  ...\n }";
     const code7 =
       "navigator.credentials.get({\n  publicKey: {\n    ...\n  }\n});";
@@ -89,24 +88,31 @@ class App extends Component {
     const code11 =
       "publicKey: {\n  ...\n  userVerification: 'preferred',\n  ...\n}";
     const resCredcode =
-      "navigator.credentials.create({\n  publicKey: {\n    ...\n    authenticatorSelection: {  \n      ...\n      requireResidentKey: true\n    }\n  }\n});";
-    const mediationcode =
-      "navigator.credentials.get({\n  ...\n  mediation: \"silent\"| \"optional\" | \"conditional\" | \"required\"\n});";
-    const mediationcode2 =
-      "<input \n  type=\"text\" \n  name=\"name\" \n  autocomplete=\"username webauthn\"\n\/>";
+      "publicKey: {\n  ...\n  authenticatorSelection: {  \n    ...\n    requireResidentKey: true\n  },\n  ...\n }";
     const isAvailableCode =
       "PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();";
-    const createBackend1 = "{\n  \"rawId\": \"010d...8c\",\n  \"id\": \"AQ...ow\",\n  \"type\": \"public-key\",\n  \"response\": {\n    \"clientDataJSON\": {...},\n    \"attestationObject\": {...}\n  }\n}";
-    const createBackend2 = "{\n  \"clientDataJSON\": {\n    \"type\": \"webauthn.create\",\n    \"challenge\": \"FuRfP7QOl...RiHq3iytg\",\n    \"origin\": \"https://webauthn.me\",\n    \"crossOrigin\": false,\n  }\n}";
-    const createBackend3 = "{\n  \"attestationObject\": {\n    \"fmt\": \"none\",\n    \"attStmt\": {...},\n    \"authData\": {\n      \"rpIdHash\": \"f9...ad\",\n      \"flags\": {...},\n      \"attestedCredentialData\": {\n        \"credentialPublicKey\": {\n          \"kty\": \"EC\",\n          \"alg\": \"ECDSA_w_SHA256\",\n          \"crv\": \"P-256\",\n          \"x\": \"ig...JvGg=\",\n          \"y\": \"PK...06c4=\"\n        }\n      }\n    }\n  }\n}";
-    const getBackend = "{\n  \"signature\": \"304...85c\",\n  \"userHandle\": \"5b4...d98\",\n  \"clientDataJSON\": {\n    \"type\": \"webauthn.get\",\n    \"challenge\": \"FuRfP7QOlAWW6moq2oU4MR9Mlxi6pJ3LqJRiHq3iytg\",\n    \"origin\": \"https://webauthn.me\",\n    \"crossOrigin\": false\n  },\n  \"authenticatorData\": {\n    \"rpIdHash\": \"f95...cd2e1ad\",\n    \"signCount\": 1600698991\n  }\n}";
+      const createBackend1 = "{\n  \"rawId\": \"010d...8c\",\n  \"id\": \"AQ...ow\",\n  \"type\": \"public-key\",\n  \"response\": {\n    \"clientDataJSON\": {...},\n    \"attestationObject\": {...}\n  }\n}";
+      const createBackend2 = "{\n  \"clientDataJSON\": {\n    \"type\": \"webauthn.create\",\n    \"challenge\": \"FuRfP7QOl...RiHq3iytg\",\n    \"origin\": \"https://webauthn.me\",\n    \"crossOrigin\": false,\n  }\n}";
+      const createBackend3 = "{\n  \"attestationObject\": {\n    \"fmt\": \"none\",\n    \"attStmt\": {...},\n    \"authData\": {\n      \"rpIdHash\": \"f9...ad\",\n      \"flags\": {...},\n      \"attestedCredentialData\": {\n        \"credentialPublicKey\": {\n          \"kty\": \"EC\",\n          \"alg\": \"ECDSA_w_SHA256\",\n          \"crv\": \"P-256\",\n          \"x\": \"ig...JvGg=\",\n          \"y\": \"PK...06c4=\"\n        }\n      }\n    }\n  }\n}";
+      const getBackend = "{\n  \"signature\": \"304...85c\",\n  \"userHandle\": \"5b4...d98\",\n  \"clientDataJSON\": {\n    \"type\": \"webauthn.get\",\n    \"challenge\": \"FuRfP7QOlAWW6moq2oU4MR9Mlxi6pJ3LqJRiHq3iytg\",\n    \"origin\": \"https://webauthn.me\",\n    \"crossOrigin\": false\n  },\n  \"authenticatorData\": {\n    \"rpIdHash\": \"f95...cd2e1ad\",\n    \"signCount\": 1600698991\n  }\n}";
+    // const footer = <Footer left="@sambego" right="1990.sambego.tech&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" />
+    const footer = <Footer left={<Highlight color="#99c794">@sambego</Highlight>} right={<Highlight color="#99c794">1990.sambego.tech</Highlight>} />;
     
     return (
       // <Deck navigation footer={footer}>
-      <Deck>
-        <Slide style={{ background: "#6699CC", color: "#fff" }}>
+      <Deck footer={footer} >
+      {/* <Deck footer={footer} > */}
+        <Slide style={{ background: "#99c794", color: "#fff" }}>
+          <Video
+            src={future}
+            loop
+            autoplay
+            full
+            color="#99c794"
+            style={{ overflow: "hidden", zIndex: 1 }}
+          />
           <Title style={{ color: "#ffffff", position: "relative", zIndex: 1 }}>
-            Life Beyond Passwords
+            Passwords are so 1990
           </Title>
           <Image
             src={cc}
@@ -123,29 +129,170 @@ class App extends Component {
         <Slide>
           <Columns>
             <div>
-              <Image src={Sam} alt="A picture of me" full color="#6699CC" />
+              <Image src={Sam} alt="A picture of me" full color="#99c794" />
             </div>
             <div>
               <Subtitle>Sam Bellen</Subtitle>
               <List>
-                <li>Principal Developer Advocate</li>
-                <li>Okta</li>
+                <li>Senior Developer Advocate Engineer at Auth0</li>
                 <li>Google Developer Expert</li>
                 <li>@sambego</li>
               </List>
             </div>
           </Columns>
         </Slide>
+        {/* <Slide>
+          <video src={NPM} autoPlay style={{ height: "80vh" }}></video>
+          <Text>
+            <span style={{ fontFamily: "monospace" }}>
+              npx @sambego/about-me
+            </span>
+          </Text>
+        </Slide> */}
+        {/* <Slide>
+          <Image
+            src={Poes}
+            alt="I've got cat stickers, tweet me @sambego"
+            full
+            color="#99c794"
+          />
+          <Subtitle
+            style={{
+              position: "absolute",
+              left: "50%",
+              top: "50%",
+              transform: "translate3d(-50%, -50%, 0)",
+              color: "#fff",
+              margin: 0,
+            }}
+          >
+            Tweet me @sambego
+          </Subtitle>
+        </Slide> */}
+        <Slide>
+          <Subtitle>
+            <a
+              style={{ color: "#000", borderColor: "#99c794" }}
+              href="https://s990.sambego.tech"
+            >
+              1990.sambego.tech
+            </a>
+          </Subtitle>
+        </Slide>
         <Slide>
           <List>
             <Subtitle style={{ display: "inline-block" }}>Summary</Subtitle>
-            <li>Common Password types</li>
+            <li>A history of passwords</li>
+            <li>Types of passwords</li>
             <li>Passwordless authentication</li>
             <li>The Web authentication API</li>
           </List>
         </Slide>
-        
-        <Slide style={{ background: "#6699CC", color: "#000" }}>
+
+        <Slide style={{ background: "#99c794", color: "#000" }}>
+          <Title>A little history of passwords</Title>
+        </Slide>
+        <Slide>
+          <Subtitle
+            style={{
+              background: "#99c794",
+              color: "#000",
+              padding: "1rem 3rem",
+              marginBottom: "4rem",
+            }}
+          >
+            Somewhere BC
+          </Subtitle>
+          <Subtitle>Romans</Subtitle>
+        </Slide>
+        <Slide notes="In the story One Thousand and One Nights, the password to open the cave where the thieves hid they loot was “Open sesame”">
+          <Subtitle
+            style={{
+              background: "#99c794",
+              color: "#000",
+              padding: "1rem 3rem",
+              marginBottom: "4rem",
+            }}
+          >
+            10th century
+          </Subtitle>
+          <Subtitle>Open sesame</Subtitle>
+        </Slide>
+        <Slide style={{ background: "#99c794", color: "#000" }} notes="Fast forward a few hundred years and enter Fernando Corbató.">
+          <Image src={FastForward} alt="Fast Forward" />
+        </Slide>
+        <Slide notes="Widely regarded as the godfather of the modern computer password, he introduced the idea to computer science while working at the Massachusetts Institute of Technology (MIT) in 1960.The university had developed a huge Compatible Time-Sharing System (CTSS) that all researchers had access to. However, they shared a common mainframe as well as a single disk file.To help keep individual files private, the concept of a password was developed so that users could only access their own specific files for their allotted four hours a week – hey, computer time was limited back in the 60s.">
+          <Subtitle
+            style={{
+              background: "#99c794",
+              color: "#000",
+              padding: "1rem 3rem",
+              marginBottom: "4rem",
+            }}
+          >
+            1961
+          </Subtitle>
+          <Subtitle>
+            Fernando Corbató
+          </Subtitle>
+          <Text>Time-Sharing System</Text>
+        </Slide>
+        <Slide notes="Working for Bell Labs in the 70s, cryptographer Robert Morris Sr. devised “hashing”, the process by which a string of characters is transformed into a numerical code that represents the original phrase. This has the effect of not having to store the actual password itself in the password database. Hashing was adopted in early unix-like operating systems, which are widely used today across the world in mobile devices and workstations. Apple’s macOS, for example, uses unix, while the PlayStation 4 uses Orbis OS, a unix-like operating system.">
+          <Subtitle
+            style={{
+              background: "#99c794",
+              color: "#000",
+              padding: "1rem 3rem",
+              marginBottom: "4rem",
+            }}
+          >
+            1970s
+          </Subtitle>
+          <Subtitle>
+            Robert Morris Sr
+          </Subtitle>
+          <Text>Hashing</Text>
+        </Slide>
+        <Slide notes="When the web exploded in the 90s more and more public facing systems started popping up. Of course they became a target of people with bad intentions and hacking became more of an issue. Issues like hashing and salting help create a more secure way to store passwords.">
+          <Subtitle
+            style={{
+              background: "#99c794",
+              color: "#000",
+              padding: "1rem 3rem",
+              marginBottom: "4rem",
+            }}
+          >
+            1990s
+          </Subtitle>
+          <Subtitle>Hacking became more an issue</Subtitle>
+        </Slide>
+        <Slide>
+          <Subtitle
+            style={{
+              background: "#99c794",
+              color: "#000",
+              padding: "1rem 3rem",
+              marginBottom: "4rem",
+            }}
+          >
+            {new Date().getFullYear()}
+          </Subtitle>
+          <Subtitle>We still use passwords</Subtitle>
+        </Slide>
+        <Slide>
+          <Subtitle
+            style={{
+              background: "#99c794",
+              color: "#000",
+              padding: "1rem 3rem",
+              marginBottom: "4rem",
+            }}
+          >
+            {new Date().getFullYear()}
+          </Subtitle>
+          <Subtitle>😭</Subtitle>
+        </Slide>
+        <Slide style={{ background: "#99c794", color: "#000" }}>
           <Title>Types of passwords</Title>
         </Slide>
         <Slide>
@@ -157,7 +304,7 @@ class App extends Component {
         <Slide>
           <Text
             style={{
-              background: "#6699CC",
+              background: "#99c794",
               padding: "1rem 2rem",
               marginBottom: "4rem",
               fontWeight: "bold",
@@ -169,8 +316,8 @@ class App extends Component {
           <Subtitle style={{
             padding: '3rem 5rem',
             fontSize: '4rem',
-            background: '#d9eafa',
-            border: '2px solid #6fa9e2',
+            background: '#f4f8f7',
+            border: '2px solid #b6c9a8',
             borderRadius: '5px',
             lineHeight: 1,
             fontFamily: 'monospace',
@@ -180,7 +327,7 @@ class App extends Component {
         <Slide>
           <Text
             style={{
-              background: "#6699CC",
+              background: "#99c794",
               padding: "1rem 2rem",
               marginBottom: "4rem",
               fontWeight: "bold",
@@ -192,8 +339,8 @@ class App extends Component {
           <Subtitle style={{
             padding: '3rem 5rem',
             fontSize: '4rem',
-            background: '#d9eafa',
-            border: '2px solid #6fa9e2',
+            background: '#f4f8f7',
+            border: '2px solid #b6c9a8',
             borderRadius: '5px',
             lineHeight: 1
           }}>Password1234</Subtitle>
@@ -201,7 +348,7 @@ class App extends Component {
         <Slide>
           <Text
             style={{
-              background: "#6699CC",
+              background: "#99c794",
               padding: "1rem 2rem",
               marginBottom: "4rem",
               fontWeight: "bold",
@@ -213,8 +360,8 @@ class App extends Component {
           <Subtitle style={{
             padding: '3rem 5rem',
             fontSize: '4rem',
-            background: '#d9eafa',
-            border: '2px solid #6fa9e2',
+            background: '#f4f8f7',
+            border: '2px solid #b6c9a8',
             borderRadius: '5px',
             lineHeight: 1
           }}>Zbety6FZiH6XNn3dsziGRB6+MBGDYU?</Subtitle>
@@ -222,7 +369,7 @@ class App extends Component {
         <Slide>
           <Text
             style={{
-              background: "#6699CC",
+              background: "#99c794",
               padding: "1rem 2rem",
               marginBottom: "4rem",
               fontWeight: "bold",
@@ -234,15 +381,15 @@ class App extends Component {
           <Subtitle style={{
             padding: '3rem 5rem',
             fontSize: '4rem',
-            background: '#d9eafa',
-            border: '2px solid #6fa9e2',
+            background: '#f4f8f7',
+            border: '2px solid #b6c9a8',
             borderRadius: '5px',
             lineHeight: 1
           }}>correct-horse-battery-staple</Subtitle>
         </Slide>
         <Slide>
           <Subtitle>
-            Can be <Highlight style={{background: '#99c794'}}>hard to guess (by others)</Highlight> if complex
+            Can be <Highlight color="#99c794">hard to guess (by others)</Highlight> if complex
           </Subtitle>
         </Slide>
         <Slide>
@@ -251,13 +398,13 @@ class App extends Component {
           </Subtitle>
           <br/>
           <br/>
-          <Text>A password manager can help!</Text>
+          <Text>A passwordmanager can help!</Text>
         </Slide>
 
         <Slide>
           <Text
             style={{
-              background: "#6699CC",
+              background: "#99c794",
               padding: "1rem 2rem",
               marginBottom: "4rem",
               fontWeight: "bold",
@@ -269,15 +416,15 @@ class App extends Component {
           <Subtitle style={{
             padding: '3rem 5rem',
             fontSize: '4rem',
-            background: '#d9eafa',
-            border: '2px solid #6fa9e2',
+            background: '#f4f8f7',
+            border: '2px solid #b6c9a8',
             borderRadius: '5px',
             lineHeight: 1
           }}>1 2 3 4</Subtitle>
         </Slide>
         <Slide>
           <Subtitle>
-            Fairly <Highlight style={{background: '#99c794'}}>easy to remember</Highlight>
+            Fairly <Highlight>easy to remember</Highlight>
           </Subtitle>
         </Slide>
         <Slide>
@@ -297,7 +444,7 @@ class App extends Component {
         <Slide>
           <Text
             style={{
-              background: "#6699CC",
+              background: "#99c794",
               padding: "1rem 2rem",
               marginBottom: "4rem",
               fontWeight: "bold",
@@ -311,7 +458,7 @@ class App extends Component {
         <Slide>
           <Text
             style={{
-            background: "#6699CC",
+              background: "#99c794",
               padding: "1rem 2rem",
               marginBottom: "4rem",
               fontWeight: "bold",
@@ -323,7 +470,7 @@ class App extends Component {
           <Image src={Pattern2} alt="a pattern" />
         </Slide>
         <Slide>
-          <Subtitle><Highlight style={{background: '#99c794'}}>Easy to remember</Highlight></Subtitle>
+          <Subtitle><Highlight>Easy to remember</Highlight></Subtitle>
         </Slide>
         <Slide>
           <Subtitle>
@@ -359,7 +506,7 @@ class App extends Component {
           <Subtitle>Data breaches <Highlight>don't always include passwords</Highlight>.</Subtitle>
         </Slide>
         <Slide>
-          <Subtitle>Sometimes <Highlight>they do</Highlight>.</Subtitle>
+          <Subtitle>Somtimes <Highlight>they do</Highlight>.</Subtitle>
         </Slide>
         <Slide>
           <Subtitle>Sometimes in <Highlight>plain text</Highlight>.</Subtitle>
@@ -409,36 +556,40 @@ class App extends Component {
         <Slide>
           <Image src={Checkup} alt="Google Chrome password checkup extension" />
         </Slide>
-        {/* <Slide>
+        <Slide>
           <Subtitle>Tips for a good password</Subtitle>
           <List>
             <li>Use a reasonably <Highlight>long</Highlight> password</li>
             <li>Don’t use <Highlight>personal data</Highlight></li>
             <li>Don’t <Highlight>re-use</Highlight> passwords</li>
           </List>
-        </Slide> */}
+        </Slide>
 
-        <Slide style={{ background: "#6699CC"}}>
+        <Slide style={{background: "#99c794"}}>
+          <Image src={FastForward} alt="Fast Forward" />
+        </Slide>
+
+        <Slide style={{ background: "#99c794"}}>
           <Title>Passwordless</Title>
         </Slide>
-        <Slide style={{background: '#6699CC'}}>
+        <Slide style={{background: '#99c794'}}>
           <Subtitle>One time password</Subtitle>
         </Slide>
         <Slide>
-          <Subtitle>Valid for <Highlight style={{background: '#99c794'}}>one time use</Highlight></Subtitle>
+          <Subtitle>Valid for <Highlight>one time use</Highlight></Subtitle>
         </Slide>
         <Slide>
-          <Subtitle>Often <Highlight style={{background: '#99c794'}}>expire</Highlight> after a certain time</Subtitle>
+          <Subtitle>Often <Highlight>expire</Highlight> after a certain time</Subtitle>
         </Slide>
         <Slide>
-          <Subtitle><Highlight style={{background: '#99c794'}}>Sent directly</Highlight> to the user</Subtitle>
+          <Subtitle><Highlight>Sent directly</Highlight> to the user</Subtitle>
         </Slide>
-        <Slide style={{background: '#6699CC'}}>
+        <Slide style={{background: '#99c794'}}>
           <Subtitle>Sent in an SMS</Subtitle>
         </Slide>
         <Slide>
           <Subtitle>
-            iOS and Android let you fill in the OTP with the <Highlight style={{background: '#99c794'}}>press of a button</Highlight>
+            iOS and Android let you fill in the OTP with the <Highlight>press of a button</Highlight>
           </Subtitle>
         </Slide>
         <Slide>
@@ -459,7 +610,7 @@ class App extends Component {
           </Subtitle>
         </Slide>
 
-        <Slide style={{background: '#6699CC'}}>
+        <Slide style={{background: '#99c794'}}>
           <Subtitle>Sent in an email</Subtitle>
         </Slide>
         <Slide>
@@ -471,7 +622,7 @@ class App extends Component {
         </Slide>
         <Slide>
           <Subtitle>
-            You don't need a <Highlight style={{background: '#99c794'}}>second device</Highlight>
+            You don't need a <Highlight>second device</Highlight>
           </Subtitle>
         </Slide>
         <Slide>
@@ -480,7 +631,7 @@ class App extends Component {
           </Subtitle>
         </Slide>
 
-        <Slide style={{background: '#6699CC'}}>
+        <Slide style={{background: '#99c794'}}>
           <Subtitle>Authenticator app</Subtitle>
         </Slide>
         <Slide>
@@ -532,7 +683,7 @@ class App extends Component {
           </Subtitle>
         </Slide>
 
-        <Slide style={{background: '#6699CC'}}>
+        <Slide style={{background: '#99c794'}}>
           <Subtitle>Social</Subtitle>
         </Slide>
         <Slide>
@@ -540,12 +691,12 @@ class App extends Component {
         </Slide>
         <Slide>
           <Subtitle>
-            <Highlight style={{background: '#99c794'}}>One less password</Highlight> to remember
+            <Highlight>One less password</Highlight> to remember
           </Subtitle>
         </Slide>
         <Slide>
           <Subtitle>
-            Only give a password to a <Highlight style={{background: '#99c794'}}>service you trust</Highlight>
+            Only give a password to a <Highlight>service you trust</Highlight>
           </Subtitle>
         </Slide>
         <Slide>
@@ -558,10 +709,10 @@ class App extends Component {
           <Subtitle>One Time Passwords are often used as <Highlight>a second factor</Highlight></Subtitle>
         </Slide>
 
-        <Slide style={{ background: "#6699CC"}}>
+        <Slide style={{ background: "#99c794"}}>
           <Title>Web Authentication API</Title>
         </Slide>
-        <Slide style={{ background: "#6699CC"}}>
+        <Slide style={{ background: "#99c794"}}>
           <Title>WebAuthN</Title>
         </Slide>
         <Slide>
@@ -586,6 +737,14 @@ class App extends Component {
         </Slide>
         <Slide>
           <Webauthn />
+        </Slide>
+        <Slide>
+          <Subtitle>
+            Most modern devices have a built in authenticator device
+          </Subtitle>
+        </Slide>
+        <Slide>
+          <Webauthn platform />
         </Slide>
         <Slide>
           <Subtitle style={{ fontSize: "20rem" }}>🎉</Subtitle>
@@ -745,29 +904,17 @@ class App extends Component {
         <Slide><Subtitle>Validate <Highlight>user, challenge, and origin</Highlight></Subtitle></Slide>
         <Slide><Subtitle>Validate the returned <Highlight>signature</Highlight></Subtitle></Slide>
         
-        {/* <Slide>
+        <Slide>
           <Subtitle><Highlight>Resident</Highlight> credentials</Subtitle>
         </Slide>
         <Slide>
-          <Subtitle><Highlight>Discoverable</Highlight> credentials</Subtitle>
-        </Slide>
-        <Slide>
           <Code code={resCredcode} />
-        </Slide> */}
+        </Slide>
         {/* <Slide>
           <Webauthn resident/>
         </Slide> */}
-
-        {/* <Slide>
-          <Subtitle>User <Highlight>mediation</Highlight></Subtitle>
-        </Slide>
-        <Slide>
-          <Code code={mediationcode} />
-        </Slide> */}
-        {/* <Slide>
-          <Code code={mediationcode2} />
-        </Slide> */}
-                
+        
+        
         {/* <Slide>
           <Image contain src={Debugger} alt="Chrome devtools WebAuthn debugger" />
         </Slide> */}
@@ -791,7 +938,7 @@ class App extends Component {
           <Subtitle><Highlight>Phishing</Highlight> resistant</Subtitle>
         </Slide>
         <Slide>
-          <Subtitle>You only <Highlight>store public data</Highlight> in your database</Subtitle>
+          <Subtitle>You only <Highlight>store public data</Highlight> in you database</Subtitle>
         </Slide>
         <Slide>
           <Subtitle><Highlight>Fine-grained controll</Highlight> which kind of credentials to allow</Subtitle>
@@ -803,19 +950,20 @@ class App extends Component {
           <Subtitle><Highlight>No more passwords!</Highlight></Subtitle>
         </Slide>
         
+        
         <Slide>
           <Subtitle>Some <Highlight>issues</Highlight> still to be solved</Subtitle>
         </Slide>
         <Slide>
           <Subtitle>User <Highlight>credential management</Highlight></Subtitle>
         </Slide>
-        {/* <Slide>
+        <Slide>
           <Image
             src={ChromeManageCreds}
             alt="Chrome can manage some data"
             style={{ objectFit: "contain" }}
           />
-        </Slide> */}
+        </Slide>
         <Slide>
           <Image
             src={YubicoManager}
@@ -824,61 +972,78 @@ class App extends Component {
           />
         </Slide>
         <Slide>
-          <Subtitle>This is <Highlight>solved</Highlight> with Authenticator devices that support <Highlight>CTAP 2.1</Highlight></Subtitle>
-        </Slide>
-        <Slide>
           <Subtitle><Highlight>Cross device</Highlight> credentials</Subtitle>
         </Slide>
         <Slide>
           <Subtitle>Lost/stolen authenticator <Highlight>device recovery</Highlight></Subtitle>
         </Slide>
 
-        <Slide style={{ background: "#6699CC"}}>
-          <Title>Passkeys</Title>
+        <Slide>
+          <Subtitle>
+            Webauthn <Highlight>might</Highlight> replace Passwords
+          </Subtitle>
         </Slide>
         <Slide>
-          <Subtitle>Passkeys are <Highlight>WebAuthn credentials</Highlight>, that are <Highlight>synced across devices</Highlight></Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle>This solves <Highlight>user credential management</Highlight></Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle>Passkeys can be <Highlight>managed in your platforns keychain</Highlight></Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle>This solves <Highlight>cross device credentials</Highlight></Subtitle>
-        </Slide>
-        <Slide>
-          <Subtitle>Passkeys are automatically <Highlight>synced across devices within an ecosystem</Highlight></Subtitle>
-        </Slide>
-        <Slide>
-          <Passkey />
-        </Slide>
-        <Slide>
-          <Subtitle>Use <Highlight>existing passkey</Highlight> from <Highlight>another ecosystem</Highlight></Subtitle>
-        </Slide>
-        <Slide>
-          <Passkey />
-        </Slide>
-        <Slide>
-          <Subtitle>🎉</Subtitle>
+          <Subtitle>
+            Webauthn does <Highlight>not</Highlight> replace
+          </Subtitle>
+          <List>
+            <li>
+              Token based authentication / authorization (OAuth, OIDC, ...)
+            </li>
+            <li>Identity providers (Auth0)</li>
+            <li>...</li>
+          </List>
         </Slide>
 
         <Slide>
+          <Subtitle>It's a <Highlight>W3C Recommendation</Highlight>!</Subtitle>
+        </Slide>
+        <Slide>
+          <List>
+            <li>Chrome</li>
+            <li>Firefox</li>
+            <li>Edge</li>
+            <li>Safari</li>
+          </List>
+        </Slide>
+        <Slide>
+          <Subtitle>So where can I <Highlight>use this</Highlight> already?</Subtitle>
+        </Slide>
+        <Slide>
+          <List>
+            <li>Auth0</li>
+            <li>Google</li>
+            <li>Github</li>
+            <li>...</li>
+          </List>
+        </Slide>
+        <Slide>
+            <Image src={Auth0Webauthn1} alt="Auth0 webuathn" />
+        </Slide>
+        <Slide>
+            <Image src={Auth0Webauthn2} alt="Auth0 webuathn" />
+        </Slide>
+        <Slide>
+            <Image src={Auth0Webauthn3} alt="Auth0 webuathn" />
+        </Slide>
+        <Slide>
+          <Browser url="https://webauthn.me" />
+        </Slide>
+
+        {/* <Slide>
           <Subtitle>Let's summarize</Subtitle>
           <List>
             <li>Boo passwords!</li>
             <li>One time passwords are cool!</li>
-            <li>WebAuthn and passkeys are even cooler!!</li>
+            <li>Webauthn is even cooler!!</li>
           </List>
-        </Slide>
-        
+        </Slide> */}
         <Slide>
-          <Subtitle>
-            <a href="https://a0.to/lbp-oktane22" target="_blank" style={{color: '#000'}}>
-              a0.to/lbp-oktane22
-            </a>
-          </Subtitle>
+          <Subtitle>Let's summarize</Subtitle>
+          <List>
+            <li>Boo passwords!</li>
+          </List>
         </Slide>
         <Slide>
           <List>
@@ -895,7 +1060,51 @@ class App extends Component {
           </List>
         </Slide>
         <Slide>
+          <List>
+            <li>
+              <a href="https://auth0.com/blog" target="_blank">
+                https://auth0.com/blog
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://auth0.com/blog/enhancing-webauthn-me-with-the-online-debugger-tool/"
+                target="_blank"
+              >
+                https://auth0.com/blog/enhancing-webauthn-me-with-the-online-debugger-tool/
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://auth0.com/blog/a-look-at-webauthn-resident-credentials/"
+                target="_blank"
+              >
+                https://auth0.com/blog/a-look-at-webauthn-resident-credentials/
+              </a>
+            </li>
+          </List>
+        </Slide>
+        <Slide>
+        <Subtitle>
+            <a
+              style={{ color: "#000", borderColor: "#99c794" }}
+              href="https://s990.sambego.tech"
+            >
+              1990.sambego.tech
+            </a>
+          </Subtitle>
+        </Slide>
+
+        <Slide>
           <Subtitle>Thanks!</Subtitle>
+        </Slide>
+        <Slide>
+          <Image
+            src={Poes}
+            alt="I've got cat stickers, tweet me @sambego"
+            full
+            color="#99c794"
+          />
         </Slide>
       </Deck>
     );

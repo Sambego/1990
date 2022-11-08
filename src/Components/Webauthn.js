@@ -82,7 +82,7 @@ const Webauthn = ({ platform, resident }) => {
 
   return (
     <>
-      {!success && <form onSubmit={handleRegister} className="form" style={{border: '2px solid #6fa9e2', borderRadius: '10px', padding: '5rem', boxShadow: '0 0 30px 5px rgba(0, 0, 0, 0.1)'}}>
+      {!success && <form onSubmit={handleRegister} className="form" style={{border: '2px solid #b6c9a8', borderRadius: '10px', padding: '5rem', boxShadow: '0 0 30px 5px rgba(0, 0, 0, 0.1)'}}>
         {!resident && <input
           type="text"
           defaultValue="Sambego"
@@ -96,12 +96,12 @@ const Webauthn = ({ platform, resident }) => {
       }
 
       {success && <>
-        <Subtitle>Login successful!</Subtitle>
+        <Subtitle>Login successfull!</Subtitle>
         <div style={{
           padding: '3rem 5rem',
           fontSize: '4rem',
-          background: '#d9eafa',
-          border: '2px solid #6fa9e2',
+          background: '#f4f8f7',
+          border: '2px solid #b6c9a8',
           borderRadius: '5px',
           lineHeight: 1,
           fontFamily: 'monospace',
